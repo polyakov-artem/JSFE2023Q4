@@ -425,3 +425,69 @@ body {
     height: 3.75rem;
     display: flex;
 }
+
+.page {
+    margin: 0 auto;
+    background-color: var(--background-body);
+    max-width: var(--page-max-width);
+    min-height: 100%;
+    position: relative;
+    padding: 1.25rem 0 2.5rem;
+}
+
+.page__header {
+    margin-bottom: 1.25rem;
+}
+
+.page__enjoy {
+    margin-bottom: 6.25rem;
+}
+
+.page__favourites-coffee {
+    margin-bottom: 6.25rem;
+}
+
+.page__about {
+    margin-bottom: 6.25rem;
+}
+
+.page__mobile-app {
+    margin-bottom: 6.35rem;
+}
+
+.page__menu {
+    margin-bottom: 6.25rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 1rem 3.5%;
+    padding: 0 2.5rem;
+}
+
+.header__home-link {
+    flex: none;
+}
+
+.header__nav {
+    flex: 1 1 auto
+}
+
+.header__menu {
+    display: flex;
+    gap: 1rem 3.5%;
+    flex-wrap: wrap;
+}
+
+.header__item:first-child {
+    margin-left: auto;
+}
+
+.header__item:last-child {
+    margin-left: auto;
+}
+
+.header__toggler {
+    display: none;
+}

@@ -1,0 +1,117 @@
+:root {
+    --text-dark: rgb(64, 63, 61, 1);
+    --text-light: rgb(225, 212, 201, 1);
+    --text-accent: rgb(176, 144, 122, 1);
+    --background-body: rgb(225, 212, 201, 1);
+    --background-container: rgb(102, 95, 85, 1);
+    --background-backdrop: rgba(64, 63, 61, 0.80);
+    --background-page: rgb(182, 174, 167);
+    --border-light: rgb(193, 182, 173, 1);
+    --border-dark: rgb(102, 95, 85, 1);
+    --white: rgb(255, 255, 255);
+
+
+    --ff-inter: Inter, Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+    --page-max-width: 1440px;
+    --page-tablet-width: 768px;
+    --page-min-width: 320px;
+}
+
+@font-face {
+    font-family: Inter;
+    src: local("Inter"), local("Inter-Regular"),
+        url(./../assets/fonts/Inter/Inter-Regular.woff2) format("woff2"),
+        url(./../assets/fonts/Inter/Inter-Regular.woff) format("woff"),
+        url(./../assets/fonts/Inter/Inter-Regular.ttf) format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Inter;
+    src: local("Inter SemiBold"), local("Inter-SemiBold"),
+        url(./../assets/fonts/Inter/Inter-SemiBold.woff2) format("woff2"),
+        url(./../assets/fonts/Inter/Inter-SemiBold.woff) format("woff"),
+        url(./../assets/fonts/Inter/Inter-SemiBold.ttf) format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+    :root {
+        scroll-behavior: smooth;
+    }
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+
+body {
+    min-height: 100%;
+    min-width: var(--page-min-width);
+    background-color: var(--background-body);
+    color: var(--text-dark);
+    font-family: var(--ff-inter);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    /* Prevent adjustments of font size after orientation changes in iOS: */
+    -webkit-text-size-adjust: 100%;
+    /* Change the default tap highlight to be completely transparent in iOS: */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.h1 {
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: var(--ff-inter);
+    font-size: 4.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 105%;
+    margin: 0;
+}
+
+.h1__accent {
+    font-style: italic;
+    color: var(--text-accent);
+}
+
+.h2 {
+    font-size: 3.75rem;
+    font-weight: 600;
+    line-height: 125%;
+    margin: 0;
+}
+
+.h2__accent {
+    color: var(--text-accent);
+    font-style: italic;
+}
+
+.h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 125%;
+    margin: 0;
+}
+
+.h3__accent {
+    font-style: italic;
+}
+
+.text {
+    margin: 0;
+}

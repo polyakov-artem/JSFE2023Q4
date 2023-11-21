@@ -631,3 +631,31 @@ body {
 .about__img:hover {
     transform: scale(1);
 }
+
+.mobile-app {
+    padding: 0 2.5rem;
+}
+
+.mobile-app__grid {
+    gap: 6.25rem 7.4%;
+    display: flex;
+    align-items: center;
+}
+
+.mobile-app__column {
+    flex: 0 1 50%
+}
+
+.mobile-app__title {
+    margin-bottom: 2.5rem;
+}
+
+.mobile-app__text {
+    margin-bottom: 2.5rem;
+}
+
+.mobile-app__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+}

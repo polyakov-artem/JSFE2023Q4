@@ -459,6 +459,7 @@ body {
     margin-bottom: 6.25rem;
 }
 
+
 .header {
     display: flex;
     align-items: center;
@@ -490,4 +491,27 @@ body {
 
 .header__toggler {
     display: none;
+}
+
+.enjoy {
+    color: var(--text-light);
+    padding: 0 2.5rem;
+}
+
+.enjoy__inner {
+    border-radius: 2.5rem;
+    padding: 6.25rem;
+    background: url("../assets/img/intro/img-hero.jpg") no-repeat center / cover;
+}
+
+.enjoy__column {
+    max-width: 530px;
+}
+
+.enjoy__title {
+    margin-bottom: 2.5rem;
+}
+
+.enjoy__text {
+    margin-bottom: 2.5rem;
 }

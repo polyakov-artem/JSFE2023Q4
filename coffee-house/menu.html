@@ -172,7 +172,113 @@
 </svg>
 
 <div class="page">
- 
+  <header class="header page__header">
+
+    <a class="header__home-link" href="./">
+      <img class="logo" src="./assets/svg/logo.svg" alt="Logo">
+    </a>
+
+    <nav class="header__nav">
+      <ul class="list header__menu">
+        <li class="header__item">
+          <a class="link link_underlined link-primary" href="./index.html#favourites">Favorite coffee</a>
+        </li>
+        <li class="header__item">
+          <a class="link link_underlined link-primary" href="./index.html#about">About</a>
+        </li>
+        <li class="header__item">
+          <a class="link link_underlined link-primary" href="./index.html#mobile-app">Mobile app</a>
+        </li>
+        <li class="header__item">
+          <a class="link link_underlined link-primary" href="#contacts">Contact us</a>
+        </li>
+        <li class="header__item header__menu-item">
+            <span class="link link-primary link_underlined link_hovered">Menu
+              <svg class="link-primary__icon">
+                <use xlink:href="#coffee-cup"></use>
+              </svg>
+            </span>
+        </li>
+      </ul>
+    </nav>
+
+    <button class="btn hamburger header__toggler">
+      <span class="hamburger__inner"></span>
+    </button>
+
+  </header>
+
+
+
+  <footer class="contacts page__contacts" id="contacts">
+    <div class="contacts__grid">
+      <div class="contacts__column">
+
+        <h2 class="h2 contacts__title">Sip, Savor, Smile. <span class="contacts__title__accent">It’s coffee
+                time!</span></h2>
+        <ul class="list social-links">
+          <li class="social-links__item">
+            <a class="btn btn-round btn-round_light" href="https://twitter.com" target="_blank">
+              <span class="btn-round__inner">
+                <svg class="btn-round__icon">
+                  <use xlink:href="#twitter"></use>
+                </svg>
+              </span>
+            </a>
+          </li>
+          <li class="social-links__item">
+            <a class="btn btn-round btn-round_light" href="https://instagram.com" target="_blank">
+              <span class="btn-round__inner">
+                <svg class="btn-round__icon">
+                  <use xlink:href="#instagram"></use>
+                </svg>
+              </span>
+            </a>
+          </li>
+          <li class="social-links__item">
+            <a class="btn btn-round btn-round_light" href="https://facebook.com" target="_blank">
+              <span class="btn-round__inner">
+                <svg class="btn-round__icon">
+                  <use xlink:href="#facebook"></use>
+                </svg>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="contacts__column">
+        <h3 class="h3 contacts__section-title">Contact us:</h3>
+        <ul class="list contacts-list">
+          <li class="contacts-list__item">
+            <a class="link link_underlined link-primary link-primary_light" target="_blank"
+               href="https://www.google.ru/maps/place/Eric+Green+Rd,+Louisiana+70634,+%D0%A1%D0%A8%D0%90/@30.807038,-93.2237339,17z/data=!4m15!1m8!3m7!1s0x863bac54e224e52b:0xd776dc9a51d67928!2zRXJpYyBHcmVlbiBSZCwgTG91aXNpYW5hIDcwNjM0LCDQodCo0JA!3b1!8m2!3d30.807038!4d-93.221159!16s%2Fg%2F1tm0tjns!3m5!1s0x863bac54e224e52b:0xd776dc9a51d67928!8m2!3d30.807038!4d-93.221159!16s%2Fg%2F1tm0tjns?entry=ttu">
+              <svg class="link-primary__icon">
+                <use xlink:href="#pin-alt"></use>
+              </svg>
+              <span class="link-primary__text">8558 Green Rd., LA</span>
+            </a>
+          </li>
+          <li class="contacts-list__item">
+            <a class="link link_underlined link-primary link-primary_light" href="tel:+16035550123">
+              <svg class="link-primary__icon">
+                <use xlink:href="#phone"></use>
+              </svg>
+              <span class="link-primary__text">+1 (603) 555-0123</span>
+            </a>
+          </li>
+          <li class="contacts-list__item">
+            <svg class="contacts-list__icon">
+              <use xlink:href="#clock"></use>
+            </svg>
+            <span class="contacts-list__text">
+                  Mon-Sat: 9:00 AM – 23:00 PM
+                </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 </div>
 <script type="module" src="./js/index.js"></script>
 </body>

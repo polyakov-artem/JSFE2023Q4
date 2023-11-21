@@ -168,7 +168,7 @@ body {
 
 .link_underlined:hover:after,
 .link_underlined:focus:after,
-.link_underlined.link_hovered:after{
+.link_underlined.link_hovered:after {
     width: 100%;
     opacity: 1;
 }
@@ -427,6 +427,8 @@ body {
     display: flex;
 }
 
+
+
 .page {
     margin: 0 auto;
     background-color: var(--background-body);
@@ -460,7 +462,6 @@ body {
     margin-bottom: 6.25rem;
 }
 
-
 .header {
     display: flex;
     align-items: center;
@@ -476,11 +477,13 @@ body {
     flex: 1 1 auto
 }
 
+
 .header__menu {
     display: flex;
     gap: 1rem 3.5%;
     flex-wrap: wrap;
 }
+
 
 .header__item:first-child {
     margin-left: auto;
@@ -721,3 +724,87 @@ body {
     flex: none;
 }
 
+
+.menu {
+    padding: 0 2.5rem;
+}
+
+.menu__title {
+    max-width: 800px;
+    text-align: center;
+    margin: 0 auto 2.5rem;
+
+}
+
+.menu__controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2.4rem;
+    justify-content: center;
+}
+
+.menu__control-item {
+    flex: none;
+}
+
+.menu__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+    grid-auto-rows: 1fr;
+}
+
+.menu__card {
+    min-height: 100%;
+}
+
+.item-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 2.5rem;
+    border: 1px solid var(--border-light);
+}
+
+.item-card:hover {
+    cursor: pointer;
+}
+
+.item-card:hover .item-card__img {
+    transform: scale(1);
+}
+
+.item-card__img-wrap {
+    flex: none;
+    aspect-ratio: 1 / 1;
+    border-radius: 2.5rem;
+    overflow: hidden;
+}
+
+.item-card__img {
+    transform: scale(1.1);
+    transition: 0.5s all ease;
+}
+
+.item-card__img:hover {
+    transform: scale(1);
+}
+
+.item-card__body {
+    padding: 1.25rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-card__title {
+    margin-bottom: 0.75rem;
+}
+
+.item-card__text {
+    margin-bottom: 0.75rem;
+}
+
+.item-card__price {
+    margin-top: auto;
+}

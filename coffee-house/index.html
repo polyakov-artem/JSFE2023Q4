@@ -26,6 +26,7 @@
   <title>Coffee House</title>
   <link href="./css/normalize.css" rel="stylesheet">
   <link href="./css/style.css" rel="stylesheet">
+  <!-- <link href="./dev/outline.css" rel="stylesheet"> -->
 
 
 </head>
@@ -226,7 +227,76 @@
           </div>
         </div>
       </section>
-    
+      
+      <section class="favourites-coffee page__favourites-coffee" id="favourites-coffee">
+        <h2 class="h2 favourites-coffee__title">Choose your <span class="h2__accent">favorite</span> coffee</h2>
+
+        <div class="slider favourites-coffee__slider">
+
+          <div class="slider__viewport">
+            <div class="slider__items">
+              <div class="slider__item ">
+                <article class="product-card slider__product-card">
+                  <div class="product-card__img-wrap">
+                    <img class="cover-img product-card__img" src="./assets/img/slider/coffee-slider-1.png" alt="Slide">
+                  </div>
+                  <h4 class="h3 product-card__title">S’mores Frappuccino</h4>
+                  <p class="text product-card__description">This new drink takes an espresso and mixes it with brown
+                    sugar and cinnamon before
+                    being topped with oat milk.</p>
+                  <p class="h3 product-card__price">$5.50</p>
+                </article>
+              </div>
+              <div class="slider__item" style="display: none;">
+                <article class="product-card slider__product-card">
+                  <div class="product-card__img-wrap">
+                    <img class="cover-img product-card__img" src="./assets/img/slider/coffee-slider-2.png" alt="Slide">
+                  </div>
+                  <h4 class="h3 product-card__title">Caramel Macchiato</h4>
+                  <p class="text product-card__description">Fragrant and unique classic espresso with rich
+                    caramel-peanut syrup, with cream under whipped thick foam.</p>
+                  <p class="h3 product-card__price">$5.0</p>
+                </article>
+              </div>
+              <div class="slider__item" style="display: none;">
+                <article class="product-card slider__product-card">
+                  <div class="product-card__img-wrap">
+                    <img class="cover-img product-card__img" src="./assets/img/slider/coffee-slider-3.png" alt="Slide">
+                  </div>
+                  <h4 class="h3 product-card__title">Ice coffee</h4>
+                  <p class="text product-card__description">A popular summer drink that tones and invigorates. Prepared
+                    from coffee, milk and ice.</p>
+                  <p class="h3 product-card__price">$4.50</p>
+                </article>
+              </div>
+            </div>
+
+            <button class="btn btn-round btn btn-round_dark slider__btn slider__prev-btn">
+              <span class="btn-round__inner">
+                <svg class="btn-round__icon">
+                  <use xlink:href="#arrow-left"></use>
+                </svg>
+              </span>
+            </button>
+
+            <button class="btn btn-round btn btn-round_dark slider__btn slider__next-btn">
+              <span class="btn-round__inner">
+                <svg class="btn-round__icon">
+                  <use xlink:href="#arrow-right"></use>
+                </svg>
+              </span>
+            </button>
+          </div>
+
+
+          <div class="slider__controls">
+            <button class="btn slider__control slider__control_active"></button>
+            <button class="btn slider__control"></button>
+            <button class="btn slider__control"></button>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 

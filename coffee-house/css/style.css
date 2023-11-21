@@ -167,7 +167,8 @@ body {
 }
 
 .link_underlined:hover:after,
-.link_underlined:focus:after {
+.link_underlined:focus:after,
+.link_underlined.link_hovered:after{
     width: 100%;
     opacity: 1;
 }

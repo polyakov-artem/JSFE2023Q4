@@ -659,3 +659,64 @@ body {
     flex-wrap: wrap;
     gap: 1.25rem;
 }
+
+.contacts {
+    padding: 0 2.5rem;
+    color: var(--text-light);
+}
+
+.contacts__grid {
+    padding: 6.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4.5rem 8.5%;
+    background: var(--background-container);
+    border-radius: 2.5rem;
+}
+
+.contacts__column {
+    flex: 1 1 0;
+}
+
+.contacts__title {
+    margin-bottom: 2.5rem;
+}
+
+.contacts__title-accent {
+    color: var(--text-accent);
+    font-style: italic;
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem
+}
+
+.social-links__item {
+    flex: none;
+}
+
+.contacts__section-title {
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.contacts-list {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    font-weight: 600
+}
+
+.contacts-list__item {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.contacts-list__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex: none;
+}
+

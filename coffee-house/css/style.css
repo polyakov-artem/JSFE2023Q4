@@ -847,6 +847,10 @@ body {
 
 @media (max-width: 768px) {
 
+    .page__mobile-app {
+        margin-bottom: 6.45rem;
+    }
+
     .header__menu {
         display: none;
     }
@@ -901,5 +905,13 @@ body {
 
     .mobile-app__img-column {
         padding: 0 1.875rem;
+    }
+
+    .contacts__grid {
+        padding: 6.25rem 3.75rem;
+    }
+
+    .contacts__column {
+        flex: 1 1 100%;
     }
 }

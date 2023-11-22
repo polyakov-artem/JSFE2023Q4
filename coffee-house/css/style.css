@@ -866,4 +866,40 @@ body {
     .slider__prev-btn {
         left: 0;
     }
+
+    .about__images {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .about__img-wrap {
+        display: none;
+        height: 590px;
+        width: 100%;
+    }
+
+    .about__img-wrap:first-child,
+    .about__img-wrap:last-child {
+        display: block;
+    }
+
+    .about__img-wrap:nth-child(n) {
+        aspect-ratio: auto;
+    }
+
+    .about__img {
+        transform: scale(1.05);
+    }
+
+    .mobile-app__grid {
+        flex-wrap: wrap;
+    }
+
+    .mobile-app__column {
+        flex: 0 1 100%
+    }
+
+    .mobile-app__img-column {
+        padding: 0 1.875rem;
+    }
 }

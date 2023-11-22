@@ -795,6 +795,11 @@ body {
     min-height: 100%;
 }
 
+.menu__load-btn {
+    display: none;
+    margin: 2.4rem auto 0;
+}
+
 .item-card {
     display: flex;
     flex-direction: column;
@@ -913,5 +918,17 @@ body {
 
     .contacts__column {
         flex: 1 1 100%;
+    }
+
+    .menu__grid {
+        padding: 0 0.9rem;
+    }
+
+    .menu__item:nth-child(n+5) {
+        display: none;
+    }
+
+    .menu_has-more .menu__load-btn {
+        display: block;
     }
 }

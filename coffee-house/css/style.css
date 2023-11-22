@@ -427,7 +427,43 @@ body {
     display: flex;
 }
 
+.hamburger {
+    border: 1px solid var(--border-dark);
+    color: var(--text-dark);
+    border-radius: 50%;
+    width: 2.75rem;
+    height: 2.75rem;
+    transition: 0.2s all ease;
+}
 
+.hamburger_active .hamburger__inner:before {
+    transform: rotate(45deg) translateY(-2.5px)
+}
+
+.hamburger_active .hamburger__inner::after {
+    transform: rotate(-45deg) translateY(+2.5px);
+}
+
+.hamburger__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 6px;
+}
+
+.hamburger__inner:before,
+.hamburger__inner:after {
+    display: block;
+    content: "";
+    width: 16px;
+    height: 2px;
+    background-color: var(--text-dark);
+    border-radius: 1.5px;
+    transition: 0.5s ease;
+    transform-origin: left;
+}
 
 .page {
     margin: 0 auto;

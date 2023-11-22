@@ -1,4 +1,1 @@
-console.log(`
-Score: 0/90
-
-`);
+// import './score.js'

@@ -68,10 +68,16 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
+    overflow-x: hidden;
     /* Prevent adjustments of font size after orientation changes in iOS: */
     -webkit-text-size-adjust: 100%;
     /* Change the default tap highlight to be completely transparent in iOS: */
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.body-locked {
+    height: 100%;
+    overflow-y: hidden;
 }
 
 .h1 {
@@ -142,7 +148,7 @@ body {
 }
 
 .link {
-    display: flex;
+    display: inline-flex;
     text-decoration: none;
     position: relative;
     margin: 0;
@@ -189,8 +195,19 @@ body {
 }
 
 .link-primary__icon {
+    vertical-align: bottom;
     width: 1.25rem;
     height: 1.25rem;
+}
+
+.link-primary_md-big {
+    font-size: 2rem;
+    line-height: 125%;
+}
+
+.link-primary_md-big .link-primary__icon {
+    width: 2.5rem;
+    height: 2.5rem;
 }
 
 .btn {
@@ -233,7 +250,7 @@ body {
     cursor: default;
 }
 
-.btn-tab_active:not(:disabled){
+.btn-tab_active:not(:disabled) {
     color: var(--text-light);
     border-color: var(--background-container);
     background-color: var(--background-container);
@@ -438,9 +455,9 @@ body {
     margin: 0 auto;
     background-color: var(--background-body);
     max-width: var(--page-max-width);
-    min-height: 100%;
+    overflow-x: hidden;
     position: relative;
-    padding: 1.25rem 0 2.5rem;
+    padding-bottom: 2.5rem;
 }
 
 .page__header {
@@ -471,7 +488,8 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem 3.5%;
-    padding: 0 2.5rem;
+    padding: 1.25rem 2.5rem 0;
+    background-color: var(--background-body);
 }
 
 .header__home-link {
@@ -479,7 +497,7 @@ body {
 }
 
 .header__nav {
-    flex: 1 1 auto
+    flex: 1 1 auto;
 }
 
 
@@ -803,18 +821,93 @@ body {
     margin-top: auto;
 }
 
+.slideIn {
+    animation-name: slideIn;
+}
+
+.slideOut {
+    animation-name: slideOut;
+}
+
+
+@keyframes slideIn {
+    0% {
+        visibility: visible;
+        transform: translateX(100%);
+    }
+
+    100% {
+        visibility: visible;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        visibility: visible;
+        transform: translateX(0%);
+    }
+
+    to {
+        visibility: hidden;
+        transform: translateX(100%);
+    }
+}
+
 @media (max-width: 768px) {
 
     .page__mobile-app {
         margin-bottom: 6.45rem;
     }
 
+    .header {
+        position: relative;
+        z-index: 10;
+    }
+
+    .header__nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        padding: 5rem 2.5rem 3.75rem;
+        min-height: 100vh;
+        background-color: var(--background-body);
+        transform: translateX(100%);
+        visibility: hidden;
+        animation-fill-mode: both;
+        animation-duration: 0.5s;
+    }
+
     .header__menu {
-        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 3.75rem;
+    }
+
+    .header__item:first-child {
+        margin-left: 0;
+    }
+
+    .header__item:last-child {
+        margin-left: 0;
+        margin-top: 2.5rem;
     }
 
     .header__toggler {
         display: block;
+        margin-left: auto;
+    }
+
+    .header__link {
+        text-align: center;
+        font-size: 2rem;
+        line-height: 125%;
+    }
+
+    .header__link .link-primary__icon {
+        width: 2.5rem;
+        height: 2.5rem;
     }
 
     .enjoy__inner {
@@ -910,7 +1003,7 @@ body {
     }
 
     .header {
-        padding: 0 1rem;
+        padding: 1.25rem 1rem 0;
     }
 
     .enjoy__inner {
@@ -1043,5 +1136,3 @@ body {
         transform: scale(1);
     }
 }
-
-

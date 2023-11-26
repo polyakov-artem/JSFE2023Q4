@@ -591,19 +591,19 @@ body {
     max-width: 480px;
 }
 
-.slider__controls {
+.slider__dots {
     display: flex;
     gap: 0.75rem;
     justify-content: center;
 }
 
-.slider__control {
+.slider__dot {
     width: 2.5rem;
     height: 0.25rem;
     background-color: var(--border-light);
 }
 
-.slider__control_active {
+.slider__dot_active {
     background-color: var(--border-dark);
 }
 

@@ -253,7 +253,8 @@ body {
     width: 1.875rem;
     height: 1.875rem;
     border-radius: 50%;
-    background-color: var(--background-body);
+    background-color: var(--border-light);
+    transition: 0.5s all ease;
 }
 
 .btn-tab__icon {
@@ -972,6 +973,11 @@ body {
         color: var(--text-light);
         border-color: var(--background-container);
         background-color: var(--background-container);
+    }
+
+    .btn-tab_active:not(:disabled) .btn-tab__icon-wrap,
+    .btn-tab:hover:not(:disabled) .btn-tab__icon-wrap {
+        background: var(--background-body);
     }
 
     .btn-primary__text {

@@ -336,6 +336,10 @@ body {
     align-items: center;
 }
 
+.btn-app__content{
+    text-align: left;
+}
+
 .btn-app__icon {
     width: 2.25rem;
     height: 2.25rem;

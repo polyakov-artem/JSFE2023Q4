@@ -15,7 +15,7 @@
 
     --page-max-width: 1440px;
     --page-tablet-width: 768px;
-    --page-min-width: 320px;
+    --page-min-width: 380px;
 }
 
 @font-face {
@@ -166,8 +166,6 @@ body {
     background-color: currentColor;
 }
 
-.link_underlined:hover:after,
-.link_underlined:focus:after,
 .link_underlined.link_hovered:after {
     width: 100%;
     opacity: 1;
@@ -235,8 +233,7 @@ body {
     cursor: default;
 }
 
-.btn-tab_active:not(:disabled),
-.btn-tab:hover:not(:disabled) {
+.btn-tab_active:not(:disabled){
     color: var(--text-light);
     border-color: var(--background-container);
     background-color: var(--background-container);
@@ -295,8 +292,6 @@ body {
 .btn-primary__text {
     position: relative;
     background: var(--background-body);
-    left: calc((0.5rem + 1.25rem) / 2);
-    transition: 0.5s all ease;
 }
 
 
@@ -304,20 +299,8 @@ body {
     flex: none;
     width: 1.25rem;
     height: 1.25rem;
-    opacity: 0;
-    transition: 0.5s all ease;
 }
 
-
-.btn-primary:hover:not(:disabled) .btn-primary__icon,
-.btn-primary:focus:not(:disabled) .btn-primary__icon {
-    opacity: 1;
-}
-
-.btn-primary:hover:not(:disabled) .btn-primary__text,
-.btn-primary:focus:not(:disabled) .btn-primary__text {
-    left: 0;
-}
 
 .btn-secondary {
     color: var(--text-dark);
@@ -336,12 +319,6 @@ body {
     transition: 0.5s all ease;
 }
 
-.btn-secondary:hover:not(:disabled),
-.btn-secondary:focus:not(:disabled) {
-    color: var(--text-light);
-    background: var(--background-container);
-}
-
 .btn-app {
     color: var(--text-dark);
     text-align: center;
@@ -356,12 +333,6 @@ body {
     min-width: 12.5rem;
     padding: 0.75rem 1.25rem;
     transition: 0.5s all ease;
-}
-
-.btn-app:hover:not(:disabled),
-.btn-app:focus:not(:disabled) {
-    color: var(--text-light);
-    background: var(--background-container);
 }
 
 .btn-app__inner {
@@ -408,21 +379,9 @@ body {
     color: var(--text-dark);
 }
 
-.btn-round_dark:hover:not(:disabled),
-.btn-round_dark:focus:not(:disabled) {
-    color: var(--background-body);
-    background: var(--background-container);
-}
-
 .btn-round_light {
     border: 1px solid var(--border-light);
     color: var(--background-body);
-}
-
-.btn-round_light:hover:not(:disabled),
-.btn-round_light:focus:not(:disabled) {
-    color: var(--text-dark);
-    background: var(--background-body);
 }
 
 .list {
@@ -437,7 +396,43 @@ body {
     display: flex;
 }
 
+.hamburger {
+    border: 1px solid var(--border-dark);
+    color: var(--text-dark);
+    border-radius: 50%;
+    width: 2.75rem;
+    height: 2.75rem;
+    transition: 0.2s all ease;
+}
 
+.hamburger_active .hamburger__inner:before {
+    transform: rotate(45deg) translateY(-2.5px)
+}
+
+.hamburger_active .hamburger__inner::after {
+    transform: rotate(-45deg) translateY(+2.5px);
+}
+
+.hamburger__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 6px;
+}
+
+.hamburger__inner:before,
+.hamburger__inner:after {
+    display: block;
+    content: "";
+    width: 16px;
+    height: 2px;
+    background-color: var(--text-dark);
+    border-radius: 1.5px;
+    transition: 0.5s ease;
+    transform-origin: left;
+}
 
 .page {
     margin: 0 auto;
@@ -642,10 +637,6 @@ body {
     transition: 0.5s all ease;
 }
 
-.about__img:hover {
-    transform: scale(1);
-}
-
 .mobile-app {
     padding: 0 2.5rem;
 }
@@ -769,19 +760,16 @@ body {
     min-height: 100%;
 }
 
+.menu__load-btn {
+    display: none;
+    margin: 2.4rem auto 0;
+}
+
 .item-card {
     display: flex;
     flex-direction: column;
     border-radius: 2.5rem;
     border: 1px solid var(--border-light);
-}
-
-.item-card:hover {
-    cursor: pointer;
-}
-
-.item-card:hover .item-card__img {
-    transform: scale(1);
 }
 
 .item-card__img-wrap {
@@ -794,10 +782,6 @@ body {
 .item-card__img {
     transform: scale(1.1);
     transition: 0.5s all ease;
-}
-
-.item-card__img:hover {
-    transform: scale(1);
 }
 
 .item-card__body {
@@ -818,3 +802,246 @@ body {
 .item-card__price {
     margin-top: auto;
 }
+
+@media (max-width: 768px) {
+
+    .page__mobile-app {
+        margin-bottom: 6.45rem;
+    }
+
+    .header__menu {
+        display: none;
+    }
+
+    .header__toggler {
+        display: block;
+    }
+
+    .enjoy__inner {
+        padding: 6.25rem 3.75rem;
+    }
+
+    .slider__next-btn {
+        right: 0;
+    }
+
+    .slider__prev-btn {
+        left: 0;
+    }
+
+    .about__images {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .about__img-wrap {
+        display: none;
+        height: 590px;
+        width: 100%;
+    }
+
+    .about__img-wrap:first-child,
+    .about__img-wrap:last-child {
+        display: block;
+    }
+
+    .about__img-wrap:nth-child(n) {
+        aspect-ratio: auto;
+    }
+
+    .about__img {
+        transform: scale(1.05);
+    }
+
+    .mobile-app__grid {
+        flex-wrap: wrap;
+    }
+
+    .mobile-app__column {
+        flex: 0 1 100%
+    }
+
+    .mobile-app__img-column {
+        padding: 0 1.875rem;
+    }
+
+    .contacts__grid {
+        padding: 6.25rem 3.75rem;
+    }
+
+    .contacts__column {
+        flex: 1 1 100%;
+    }
+
+    .menu__grid {
+        padding: 0 0.9rem;
+    }
+
+    .menu__item:nth-child(n+5) {
+        display: none;
+    }
+
+    .menu_has-more .menu__load-btn {
+        display: block;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .h1 {
+        font-size: 2.625rem;
+        line-height: 115%;
+    }
+
+    .h2 {
+        font-size: 2rem;
+    }
+
+    .enjoy {
+        padding: 0 1rem;
+    }
+
+    .favourites-coffee {
+        padding: 0 1rem;
+    }
+
+    .menu {
+        padding: 0 1.2rem;
+    }
+
+    .header {
+        padding: 0 1rem;
+    }
+
+    .enjoy__inner {
+        padding: 3.75rem 1rem;
+    }
+
+    .about {
+        padding: 0 1rem;
+    }
+
+    .product-card__img-wrap {
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .mobile-app {
+        padding: 0 1rem;
+    }
+
+    .contacts {
+        padding: 0 1rem;
+    }
+
+    .about__img {
+        transform: scale(1.25);
+    }
+
+    .mobile-app__grid {
+        gap: 2.3rem 7.4%;
+        display: flex;
+        align-items: center;
+    }
+
+    .mobile-app__img-column {
+        padding: 0;
+    }
+
+    .contacts__grid {
+        padding: 3.85rem 1rem;
+        gap: 2.5rem;
+    }
+
+    .contacts__section-title {
+        margin-top: 0rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .menu__controls {
+        gap: 0.5rem;
+        margin: 0 -0.3rem 2.4rem;
+    }
+
+    .menu__grid {
+        gap: 2.3rem;
+    }
+
+    .slider__btn {
+        display: none;
+    }
+}
+
+@media (hover: hover) {
+    .link_underlined:hover:after {
+        width: 100%;
+        opacity: 1;
+    }
+
+    .btn-tab:hover:not(:disabled) {
+        color: var(--text-light);
+        border-color: var(--background-container);
+        background-color: var(--background-container);
+    }
+
+    .btn-tab_active:not(:disabled) .btn-tab__icon-wrap,
+    .btn-tab:hover:not(:disabled) .btn-tab__icon-wrap {
+        background: var(--background-body);
+    }
+
+    .btn-primary__text {
+        left: calc((0.5rem + 1.25rem) / 2);
+        transition: 0.5s all ease;
+    }
+
+    .btn-primary__icon {
+        opacity: 0;
+        transition: 0.5s all ease;
+    }
+
+    .btn-primary:hover:not(:disabled) .btn-primary__icon {
+        opacity: 1;
+    }
+
+    .btn-primary:hover:not(:disabled) .btn-primary__text {
+        left: 0;
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+        color: var(--text-light);
+        background: var(--background-container);
+    }
+
+    .btn-app:hover:not(:disabled) {
+        color: var(--text-light);
+        background: var(--background-container);
+    }
+
+    .btn-round_dark:hover:not(:disabled) {
+        color: var(--background-body);
+        background: var(--background-container);
+    }
+
+    .btn-round_light:hover:not(:disabled) {
+        color: var(--text-dark);
+        background: var(--background-body);
+    }
+
+    .about__img:hover {
+        transform: scale(1);
+    }
+
+    .item-card:hover {
+        cursor: pointer;
+    }
+
+    .item-card:hover .item-card__img {
+        transform: scale(1);
+    }
+
+    .item-card__img:hover {
+        transform: scale(1);
+    }
+}
+
+

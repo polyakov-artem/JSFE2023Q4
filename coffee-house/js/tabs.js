@@ -53,9 +53,11 @@ export class Tabs {
       this._dispatchChangeEvent();
     }, 20);
   }
-
+  
   _dispatchChangeEvent() {
-    const tabChangeEvent = new CustomEvent(EVENT_TAB_CHANGED);
+    const tabChangeEvent = new CustomEvent(EVENT_TAB_CHANGED, {
+      bubbles: true
+    });
     this.tabs.dispatchEvent(tabChangeEvent);
   }
 }

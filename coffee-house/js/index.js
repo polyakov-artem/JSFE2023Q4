@@ -2,6 +2,7 @@
 import {Header} from './header.js'
 import {Tabs} from './tabs.js'
 import {Menu} from './menu.js'
+import {Modal} from './modal.js'
 
 const CLASS_HEADER = "header"
 const CLASS_TABS = "tabs"
@@ -19,4 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(`.${CLASS_MENU}`).forEach((element) => {
     new Menu(element);
   });
+
+  new Modal();
 })

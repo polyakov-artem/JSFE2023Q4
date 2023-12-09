@@ -994,11 +994,16 @@ body {
 }
 
 .calculator__option {
-    margin-bottom: 1.25rem;
+    margin: 0 0 1.25rem;
+    padding: 0;
+    border: none;
 }
 
 .calculator__option-title {
     margin: 0 0 0.5rem;
+    display: block;
+    padding: 0;
+    white-space: normal;
 }
 
 .calculator__option-buttons {

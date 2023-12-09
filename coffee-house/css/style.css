@@ -118,6 +118,14 @@ body {
     font-style: italic;
 }
 
+.caption {
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+    margin: 0;
+}
+
 .text {
     margin: 0;
 }

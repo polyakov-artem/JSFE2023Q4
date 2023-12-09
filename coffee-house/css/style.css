@@ -292,6 +292,30 @@ body {
     color: var(--text-dark);
 }
 
+.switch-btn {
+    position: relative;
+}
+
+.switch-btn__control {
+    display: block;
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+
+}
+
+.switch-btn__control:checked+.btn-tab {
+    cursor: default;
+    color: var(--text-light);
+    border-color: var(--background-container);
+    background-color: var(--background-container);
+}
+
+.switch-btn__control:checked+.btn-tab .btn-tab__icon-wrap {
+    background: var(--background-body);
+}
+
 .btn-primary {
     color: var(--text-dark);
     font-feature-settings: 'clig' off, 'liga' off;
@@ -939,6 +963,85 @@ body {
     transform: scale(1);
     opacity: 1;
     visibility: visible;
+}
+
+.calculator {}
+
+.calculator__inner {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.calculator__img-wrap {
+    width: 310px;
+    height: 310px;
+    flex: none;
+    border-radius: 2.5rem;
+    overflow: hidden;
+}
+
+.calculator__img {
+    scale: 1.1;
+}
+
+.calculator__content {
+    flex: 1 1 0;
+}
+
+.calculator__title {
+    margin-bottom: 0.7rem;
+}
+
+.calculator__description {
+    margin: 0 0 1.25rem;
+}
+
+.calculator__option {
+    margin-bottom: 1.25rem;
+}
+
+.calculator__option-title {
+    margin: 0 0 0.5rem;
+}
+
+.calculator__option-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+}
+
+.calculator__result {
+    display: flex;
+    gap: 1.25rem;
+    margin: 0 0 1.25rem;
+}
+
+.calculator__result-title {
+    margin-right: auto;
+}
+
+.calculator__result-sum {}
+
+.calculator__note {
+    display: flex;
+    padding: 0.75rem 0;
+    gap: 0.5rem;
+    align-items: flex-start;
+    border-top: 1px solid var(--border-light);
+    margin-bottom: 1.25rem;
+}
+
+.calculator__note-icon {
+    width: 1rem;
+    height: 1rem;
+    flex: none;
+}
+
+.calculator__note-text {}
+
+.calcultator__close-btn {
+    max-width: none;
 }
 
 @keyframes slideIn {

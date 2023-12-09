@@ -8,6 +8,9 @@ const CLASS_OVERLAY_ACTIVE = "backdrop_active";
 const SELECTOR_OPEN_BTN = `[data-action="open-modal"]`;
 const SELECTOR_CLOSE_BTN = `[data-action="close-modal"]`;
 
+const EVENT_CLOSE_WINDOW = "closeModalWindow"
+const EVENT_OPEN_WINDOW = "openModalWindow"
+
 export class Modal {
   constructor() {
     this.body = document.querySelector("body");
@@ -40,6 +43,7 @@ export class Modal {
   _open() {
     this._addLock();
     this._addModalClasses();
+    this._dispatchEvent(EVENT_OPEN_WINDOW);
   }
   
   _addLock() {
@@ -64,6 +68,7 @@ export class Modal {
   close() {
     this._removeLock();
     this._removeModalClasses();
+    this._dispatchEvent(EVENT_CLOSE_WINDOW);
   }
 
   _removeLock(){
@@ -75,5 +80,10 @@ export class Modal {
   _removeModalClasses() {
     this.modal.classList.remove(CLASS_MODAL_ACTIVE);
     this.overlay.classList.remove(CLASS_OVERLAY_ACTIVE);
+  }
+
+  _dispatchEvent(name){
+    const event = new CustomEvent(name, {bubbles: true});
+    this.modal.dispatchEvent(event);
   }
 }

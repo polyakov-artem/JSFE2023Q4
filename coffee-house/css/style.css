@@ -338,10 +338,10 @@ body {
     line-height: 150%;
     border-radius: 6.25rem;
     border: 1px solid var(--border-dark);
-    width: minmax(auto, 12.5rem);
-    padding: 0.625rem;
-    background: var(--white);
+    padding: 0.55rem;
     transition: 0.5s all ease;
+    width: 100%;
+    max-width: 12.5rem;
 }
 
 .btn-app {

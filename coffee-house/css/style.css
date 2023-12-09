@@ -912,13 +912,10 @@ body {
         visibility 0.5s ease;
 }
 
-.backdrop_visible {
-    visibility: visible;
-    opacity: 0.6;
-}
-
 .backdrop_active {
     pointer-events: auto;
+    visibility: visible;
+    opacity: 0.6;
 }
 
 .modal-block {

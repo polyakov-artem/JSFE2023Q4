@@ -14,7 +14,8 @@ export class CALCULATOR {
   _setSum(){
     const checkedInputs = Array.from(this.inputs).filter((item)=> item.checked);
     const sum =  checkedInputs.reduce((total, current) => total + +current.value, 0);
-    this.resultField.textContent = `$` + sum;
+    
+    this.resultField.textContent = `$` + sum.toFixed(2);
   }
 
   _bindEvents() {

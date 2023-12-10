@@ -25,6 +25,7 @@ export class Modal {
   }
 
   _clickHandler(e) {
+    if (!this.modal) return;
     const openBtn = e.target.closest(SELECTOR_OPEN_BTN);
     const closeBtn = e.target.closest(SELECTOR_CLOSE_BTN);
     const modalWindow = e.target.closest(`.${CLASS_MODAL_WINDOW}`);

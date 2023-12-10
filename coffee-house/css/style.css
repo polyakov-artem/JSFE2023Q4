@@ -1187,6 +1187,16 @@ body {
     }
 }
 
+@media (max-width: 700px) {
+    .calculator__img-wrap {
+        display: none;
+    }
+
+    .modal-block {
+        padding: 1.19rem;
+    }
+}
+
 @media (max-width: 550px) {
 
     .h1 {

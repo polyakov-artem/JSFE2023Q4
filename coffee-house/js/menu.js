@@ -115,9 +115,10 @@ export class Menu {
   }
 
   _createMenu(products) {
-    products.forEach((product) => {
-      const { category: categoryName } = product;
-
+    products.forEach((product, index) => {
+      const newProduct = { ...product };
+      const { category: categoryName } = newProduct;
+      
       if (!(categoryName in this.menu)) {
         this.menu[categoryName] = {
           products: [],
@@ -126,7 +127,8 @@ export class Menu {
         };
       }
 
-      this.menu[categoryName].products.push(product);
+      newProduct.id = this.menu[categoryName].products.length;
+      this.menu[categoryName].products.push(newProduct);
     });
   }
 
@@ -175,18 +177,22 @@ export class Menu {
     }
   }
 
+  _getImgPath(name) {
+    return `./assets/img/menu/${name.replace(/ /g, "_")}.jpg`;
+  }
+
   _createItems(products = []) {
     const fragment = new DocumentFragment();
 
     products.forEach((product) => {
-      const { name, description, price } = product;
+      const { name, description, price, category, id } = product;
 
       const domItem = document.createElement("div");
       domItem.classList.add(CLASS_ITEM);
 
-      const imgPath = `./assets/img/menu/${name.replace(/ /g, "_")}.jpg`;
+      const imgPath = this._getImgPath(name);
 
-      const productHtml = `<article class="item-card menu__card">
+      const productHtml = `<article class="item-card menu__card" data-action="open-modal" data-category="${category}" data-id="${id}">
           <div class="item-card__img-wrap">
             <img class="cover-img item-card__img" src="${imgPath}" alt="${name} image">
           </div>

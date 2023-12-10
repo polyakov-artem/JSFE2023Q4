@@ -6,13 +6,18 @@ const CLASS_LOAD_BTN = "menu__load-btn";
 const CLASS_LOAD_BTN_HIDDEN = "menu__load-btn_hidden";
 const CLASS_ITEM = "menu__item";
 const CLASS_ACTIVE_TAB = "tabs__tab_active";
+const CLASS_CALCULATOR = "calculator";
 
 const EVENT_TAB_CHANGED = "tabChange";
+const SELECTOR_OPEN_BTN = `[data-action="open-modal"]`;
+
+const EVENT_PRDOCUT_CARD_UPDATED = "productCardUpdated";
 
 export class Menu {
   constructor(element) {
     this.domMenu = element;
     this.domLoadBtn = element.querySelector(`.${CLASS_LOAD_BTN}`);
+    this.domCalculator = document.querySelector(`.${CLASS_CALCULATOR}`);
 
     this.settings = [
       { itemsToShow: 4, maxVWidth: 768 },
@@ -71,6 +76,10 @@ export class Menu {
     window.addEventListener("resize", () => {
       this._resizeHandler();
     });
+
+    this.domMenu.addEventListener("click", (e) => {
+      this._windowOpeningHandler(e);
+    });
   }
 
   _loadBtnHandler() {
@@ -100,6 +109,51 @@ export class Menu {
       }
       this._updateLoadBtnState();
     }
+  }
+
+  _windowOpeningHandler(e) {
+    const card = e.target.closest(SELECTOR_OPEN_BTN);
+    if (!card) return;
+    this._updateCalulatorView();
+
+    const { category, id } = card.dataset;
+    const product = this.menu[category].products[id];
+    this._updateCalulatorView(product);
+    
+    this.domCalculator.dispatchEvent(
+      new CustomEvent(EVENT_PRDOCUT_CARD_UPDATED, { bubbles: true })
+    );
+  }
+
+  _updateCalulatorView( product= {} ){
+    const {name = "", description = "", sizes = {}, additives = [], price = ""} = product;
+    const img = this.domCalculator.querySelector(".calculator__img");
+    img.src = this._getImgPath(name);
+    img.alt = name? `${name} image`: "";
+
+    this.domCalculator.querySelector(".calculator__title").textContent = name;
+    this.domCalculator.querySelector(".calculator__description").textContent = description;
+    const sizeButtons = this.domCalculator.querySelectorAll(`.calculator__option[name = "sizes"] .switch-btn`);
+    const addButtons = this.domCalculator.querySelectorAll(`.calculator__option[name = "additives"] .switch-btn`);
+
+    const sizeNames = Object.keys(sizes);
+
+    sizeButtons.forEach((btn, i) => {
+      const sizeName = sizeNames[i];
+      const input = btn.querySelector(".switch-btn__control");
+      (i === 0 )? (input.checked = true): (input.checked = false); 
+      btn.querySelector(`.btn-tab__icon`).textContent = sizeName?.toLocaleUpperCase() || "";
+      btn.querySelector(`.btn-tab__text`).textContent = sizes[sizeName]?.size || "";
+      input.value = +price + +(sizes[sizeName]?.["add-price"] || "");
+    });
+
+    addButtons.forEach((btn, i) => {
+      const input = btn.querySelector(".switch-btn__control");
+      input.checked = false; 
+      btn.querySelector(`.btn-tab__icon`).textContent = i + 1;
+      btn.querySelector(`.btn-tab__text`).textContent = additives[i]?.name || "";
+      btn.querySelector(`.switch-btn__control`).value = +(additives[i]?.["add-price"] || "");
+    });
   }
 
   async _loadProducts() {

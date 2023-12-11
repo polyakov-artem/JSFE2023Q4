@@ -3,12 +3,12 @@ import {Header} from './header.js'
 import {Tabs} from './tabs.js'
 import {Menu} from './menu.js'
 import {Modal} from './modal.js'
-import {CALCULATOR} from './calculator.js'
+import { Slider } from "./slider.js";
 
 const CLASS_HEADER = "header"
 const CLASS_TABS = "tabs"
 const CLASS_MENU = "menu"
-const CLASS_CALCULATOR = "calculator"
+const CLASS_SLIDER = "slider";
 
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(`.${CLASS_HEADER}`).forEach((element) => {
@@ -23,8 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     new Menu(element);
   });
 
-  document.querySelectorAll(`.${CLASS_CALCULATOR}`).forEach((element) => {
-    new CALCULATOR(element);
+  document.querySelectorAll(`.${CLASS_SLIDER}`).forEach((element) => {
+    new Slider(element);
   });
 
   new Modal();

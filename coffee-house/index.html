@@ -26,7 +26,6 @@
   <title>Coffee House</title>
   <link href="./css/normalize.css" rel="stylesheet">
   <link href="./css/style.css" rel="stylesheet">
-  <!-- <link href="./dev/outline.css" rel="stylesheet"> -->
 
 
 </head>
@@ -169,6 +168,23 @@
           stroke-linejoin="round"></path>
       </g>
     </symbol>
+
+    <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="info">
+      <g clip-path="url(#clip0_268_12877)">
+        <path id="Vector" d="M8 7.66663V11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path id="Vector_2" d="M8 5.00667L8.00667 4.99926" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round">
+        </path>
+        <path id="Vector_3"
+          d="M7.99967 14.6667C11.6816 14.6667 14.6663 11.6819 14.6663 8.00004C14.6663 4.31814 11.6816 1.33337 7.99967 1.33337C4.31778 1.33337 1.33301 4.31814 1.33301 8.00004C1.33301 11.6819 4.31778 14.6667 7.99967 14.6667Z"
+          stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+      </g>
+      <defs>
+        <clipPath id="clip0_268_12877">
+          <rect width="16" height="16" fill="white"></rect>
+        </clipPath>
+      </defs>
+    </symbol>
   </svg>
 
   <div class="page">
@@ -181,19 +197,20 @@
       <nav class="header__nav">
         <ul class="list header__menu">
           <li class="header__item">
-            <a class="link link_underlined link-primary" href="./index.html#favourites-coffee">Favorite coffee</a>
+            <a class="link link_underlined link-primary header__link" href="./index.html#favourites-coffee">Favorite
+              coffee</a>
           </li>
           <li class="header__item">
-            <a class="link link_underlined link-primary" href="./index.html#about">About</a>
+            <a class="link link_underlined link-primary header__link" href="./index.html#about">About</a>
           </li>
           <li class="header__item">
-            <a class="link link_underlined link-primary" href="./index.html#mobile-app">Mobile app</a>
+            <a class="link link_underlined link-primary header__link" href="./index.html#mobile-app">Mobile app</a>
           </li>
           <li class="header__item">
-            <a class="link link_underlined link-primary" href="#contacts">Contact us</a>
+            <a class="link link_underlined link-primary header__link" href="#contacts">Contact us</a>
           </li>
           <li class="header__item header__menu-item">
-            <a class="link link_underlined link-primary" href="./menu.html">Menu
+            <a class="link link_underlined link-primary header__link" href="./menu.html">Menu
               <svg class="link-primary__icon">
                 <use xlink:href="#coffee-cup"></use>
               </svg>
@@ -225,6 +242,7 @@
               </div>
             </a>
           </div>
+          <video class="enjoy__video" src="./assets/video/video_(720p).mp4" autoplay muted loop></video>
         </div>
       </section>
       <section class="favourites-coffee page__favourites-coffee" id="favourites-coffee">
@@ -246,7 +264,7 @@
                   <p class="h3 product-card__price">$5.50</p>
                 </article>
               </div>
-              <div class="slider__item" style="display: none;">
+              <div class="slider__item">
                 <article class="product-card slider__product-card">
                   <div class="product-card__img-wrap">
                     <img class="cover-img product-card__img" src="./assets/img/slider/coffee-slider-2.png" alt="Slide">
@@ -257,7 +275,7 @@
                   <p class="h3 product-card__price">$5.0</p>
                 </article>
               </div>
-              <div class="slider__item" style="display: none;">
+              <div class="slider__item">
                 <article class="product-card slider__product-card">
                   <div class="product-card__img-wrap">
                     <img class="cover-img product-card__img" src="./assets/img/slider/coffee-slider-3.png" alt="Slide">
@@ -288,10 +306,7 @@
           </div>
 
 
-          <div class="slider__controls">
-            <button class="btn slider__control slider__control_active"></button>
-            <button class="btn slider__control"></button>
-            <button class="btn slider__control"></button>
+          <div class="slider__dots">
           </div>
         </div>
       </section>

@@ -1,37 +1,32 @@
-const CLASS_BTN = "btn";
-const CLASS_DOT = "slider__dot";
-const CLASS_BTN_INNER = "slider__dot-inner";
-const CLASS_DOT_ACTIVE = "slider__dot_active";
-// const CLASS_DOT_VISIBLE = "slider__dot_visible";
-
-const SELECTOR_ITEM = ".slider__item";
-const SELECTOR_VIEWPORT = ".slider__viewport";
-const SELECTOR_ITEMS_WRAP = ".slider__items";
-const SELECTOR_NEXT_BTN = ".slider__next-btn";
-const SELECTOR_PREV_BTN = ".slider__prev-btn";
-const SELECTOR_DOTS_WRAP = ".slider__dots";
-const SELECTOR_DOT = ".slider__dot";
-
+const classes = {
+  btn: "btn",
+  progressBar: "slider__dot-inner",
+  dot: "slider__dot",
+  dotActive: "slider__dot_active",
+  dotsWrap: "slider__dots",
+  slide: "slider__item",
+  slidesWrap: "slider__items",
+  viewport: "slider__viewport",
+  nextBtn: "slider__next-btn",
+  prevBtn: "slider__prev-btn"
+};
 
 export class Slider {
   constructor(element) {
     this.slider = element;
-    this.items = element.querySelectorAll(SELECTOR_ITEM);
-    this.itemsWrap = element.querySelector(SELECTOR_ITEMS_WRAP);
-    this.viewport = element.querySelector(SELECTOR_VIEWPORT);
-    this.nextBtn = element.querySelector(SELECTOR_NEXT_BTN);
-    this.prevBtn = element.querySelector(SELECTOR_PREV_BTN);
-    this.dotsContainer = element.querySelector(SELECTOR_DOTS_WRAP);
-
-    this.lastSlideIndex = this.items.length - 1;
-    this.activeSlide = 0;
-    this.movingTime = 0.5;
+    this.slides = element.querySelectorAll(`.${classes.slide}`);
+    this.slidesWrap = element.querySelector(`.${classes.slidesWrap}`);
+    this.dotsWrap = element.querySelector(`.${classes.dotsWrap}`);
+    this.viewport = element.querySelector(`.${classes.viewport}`);
+    this.currentSlideIndex = 0;
+    this.switchingTime = 500;
     this.waitingTime = 2000;
     this.currentProgress = 0;
-    this.timerId;
+    this.switchTimer;
+    this.timeLeftToSwitch = this.waitingTime;
 
     this._createDots();
-    this._setTransitionOptions();
+    this._setSlidingOptions()
     this._bindEvents();
     this.play();
   }
@@ -42,69 +37,26 @@ export class Slider {
         <button class="btn slider__dot">
           <span class="slider__dot-inner"></span>
         </button>
-      </div>`.repeat(this.items.length);
+      </div>`.repeat(this.slides.length);
 
-    this.dotsContainer.insertAdjacentHTML("afterbegin", dotsHtml);
-    this.dotsContainer.children[0].classList.add(CLASS_DOT_ACTIVE);
+    this.dotsWrap.insertAdjacentHTML("afterbegin", dotsHtml);
+    this.dotsWrap.children[this.currentSlideIndex].classList.add(classes.dotActive);
+  }
+  
+  _setSlidingOptions() {
+    this.slidesWrap.style.transition = `transform ${this.switchingTime}ms ease`;
   }
 
   _bindEvents() {
-    window.addEventListener("click", this._clickHandler.bind(this));
+    this.slider.addEventListener("click", (e) => {this._btnClickHandler(e)});
+    // this.viewport.addEventListener("pointerout", (e) => {this._play()});
+    // this.viewport.addEventListener("pointerenter", (e) => {this._stop()});
+    // this.viewport.addEventListener("pointerdown", (e) => {this._stop()});
   }
 
-  _setTransitionOptions() {
-    this.itemsWrap.style.transition = `transform ${this.movingTime}s ease`;
-  }
-
-  slide(slideNum) {
-    this.dotsContainer.children[this.activeSlide].classList.remove(
-      CLASS_DOT_ACTIVE
-    );
-    this.dotsContainer.children[slideNum].classList.add(CLASS_DOT_ACTIVE);
-    this.itemsWrap.style.transform = `translateX(${-slideNum * 100}%`;
-    this.activeSlide = slideNum;
-  }
-
-  slideRight() {
-    let nextSlideNumber = this.activeSlide + 1;
-    if (nextSlideNumber > this.lastSlideIndex) nextSlideNumber = 0;
-    this.slide(nextSlideNumber);
-  }
-
-  slideLeft() {
-    let nextSlideNumber = this.activeSlide - 1;
-    if (nextSlideNumber < 0) nextSlideNumber = this.lastSlideIndex;
-    this.slide(nextSlideNumber);
-  }
-
-  _setActiveDotProgress(val) {
-    this.dotsContainer.children[this.activeSlide].style.width = `${val}%`;
-  }
-
-  _clearActiveDotProgress(val) {
-    _setActiveDotProgress(0);
-  }
-
-  play() {
-    this.timerId = setInterval(() => {
-      this.slideRight();
-    }, this.waitingTime);
-  }
-
-  disableAutoPlay() {}
-
-  // _disableBtn(btn) {
-  //   btn.setAttribute("disabled", "true");
-  // }
-
-  // _enableBtn(btn) {
-  //   btn.removeAttribute("disabled");
-  // }
-
-  _clickHandler(e) {
-    const target = e.target;
-    const nextBtn = target.closest(SELECTOR_NEXT_BTN);
-    const prevBtn = target.closest(SELECTOR_PREV_BTN);
+  _btnClickHandler(e) {
+    const nextBtn = e.target.closest(`.${classes.nextBtn}`);
+    const prevBtn = e.target.closest(`.${classes.prevBtn}`);
 
     if (nextBtn) {
       this.slideRight();
@@ -115,5 +67,72 @@ export class Slider {
       this.slideLeft();
       return;
     }
+  }
+
+  slideRight() {
+    let nextSlideIndex = this.currentSlideIndex + 1;
+    if (nextSlideIndex > this.slides.length - 1) nextSlideIndex = 0;
+    this.switchSlide(nextSlideIndex);
+  }
+
+  slideLeft() {
+    let nextSlideIndex = this.currentSlideIndex - 1;
+    if (nextSlideIndex < 0) nextSlideIndex = this.slides.length - 1;
+    this.switchSlide(nextSlideIndex);
+  }
+
+  switchSlide(nextSlideIndex) {
+    const prevSlideIndex = this.currentSlideIndex;
+    this.currentSlideIndex = nextSlideIndex;
+    this.timeLeftToSwitch = this.waitingTime;
+    
+    this._changeActiveSlide();
+    this._changeActiveDot(prevSlideIndex);
+  }
+
+  _changeActiveSlide(){
+    this.slidesWrap.style.transform = `translateX(${-this.currentSlideIndex * 100}%`;
+  }
+
+  _changeActiveDot(prevSlideIndex){
+    this._resetProgress(prevSlideIndex);
+    this.dotsWrap.children[prevSlideIndex].classList.remove(classes.dotActive);
+
+    this.dotsWrap.children[this.currentSlideIndex].classList.add(classes.dotActive);
+    this._startProgressAnimation(this.currentSlideIndex);
+  }
+
+  _resetProgress(dotIndex){
+    this._setProgress("0%", dotIndex);
+  }
+
+  _setProgress(value, dotIndex){
+    const progressBar = this.dotsWrap.children[dotIndex].querySelector(`.${classes.progressBar}`);
+    progressBar.style.transition = `none`;
+    progressBar.style.width = value;
+  }
+
+  _startProgressAnimation(dotIndex){
+    const progressBar = this.dotsWrap.children[dotIndex].querySelector(`.${classes.progressBar}`);
+    progressBar.style.transition = `width ${this.timeLeftToSwitch}ms linear`;
+    setTimeout(()=>{progressBar.style.width = "100%";}, 20)
+  }
+
+  play() {
+    this._startProgressAnimation(this.currentSlideIndex)
+    
+    this.switchTimer = setInterval( () => {
+      this.timeLeftToSwitch -= 100;
+
+      if (this.timeLeftToSwitch <= 0) {
+        this.slideRight();
+      }
+    },
+    100);
+  }
+
+  stop(){
+    clearTimeout(this.switchTimer);
+    this._setActiveProgress(`${Math.round(this.timeLeftToSwitch/this.waitingTime)*100}%`)
   }
 }

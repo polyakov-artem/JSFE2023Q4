@@ -1,5 +1,5 @@
 console.log(`
-Score: 74/90
+Score: 82/90
 
 ### CrossCheck Criteria (90 points)
 
@@ -15,14 +15,14 @@ Score: 74/90
    - [x] When the page width increases to 769px or higher, the burger icon and the open burger menu hide, and the navigation panel appears: **+2**
 2. Implementation of the carousel on the "home" page: **+24**
    - [x] Carousel elements are automatically scroll to the left with a specified time interval by default. The time interval duration is at the student's choose, but the recommended value is 5-7 seconds: **+4**
-   - [ ] The current state until the next automatic switch is shown in the progress bar of the corresponding slide by filling it with color: **+4**
-   - [ ] Only the progress bar of the current slide can be filled; the rest remain in their default state: **+2**
+   - [x] The current state until the next automatic switch is shown in the progress bar of the corresponding slide by filling it with color: **+4**
+   - [x] Only the progress bar of the current slide can be filled; the rest remain in their default state: **+2**
    - [ ] When hovering the mouse or touch-and-hold on the displayed carousel element, the time to the element switch is paused. When the mouse cursor moves out, or the hold ends, the time continues from where it stopped: **+2**
    - [x] The switch slides is accompanied by like the carousel animation (the method of animation execution is not verified): **+4**
    - [ ] Manual switching in the corresponding direction is implemented by pressing left arrow button or right arrow button: **+2**
    - [ ] For mobile devices, manual switching in the corresponding direction is additionally implemented by swiping left or right: **+2**
    - [ ] When manually switching, the progress bar state of the switched slide resets, and the progress bar of the displayed slide starts to fill: **+2**
-   - [ ] When switching to the right after the third element, it returns to the first. When switching to the left after the first element, it returns to the third: **+2**
+   - [x] When switching to the right after the third element, it returns to the first. When switching to the left after the first element, it returns to the third: **+2**
 3. Categories of products on the "menu" page: **+16**
    - [x] The **Coffee** category is active and the corresponding products are displayed when opening or reloading the "menu" page: **+2**
    - [x] When switching categories, the products of the selected category are displayed: **+2**

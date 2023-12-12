@@ -1,4 +1,4 @@
-// import './score.js'
+import './score.js'
 import {Header} from './header.js'
 import {Tabs} from './tabs.js'
 import {Menu} from './menu.js'

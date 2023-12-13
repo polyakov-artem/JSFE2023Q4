@@ -597,12 +597,14 @@ body {
     margin-bottom: 2.5rem;
 }
 
-.slider {}
+.slider {
+    position: relative;
+}
 
 .slider__viewport {
-    position: relative;
-    margin-bottom: 2.5rem;
     overflow: hidden;
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
 }
 
 .slider__items{
@@ -612,10 +614,12 @@ body {
 
 .slider__item {
     flex: 0 0 100%;
+    touch-action: none;
 }
 
 .slider__btn {
     position: absolute;
+    margin-top: -1.3rem;
     top: 50%;
     transform: translateY(-50%);
 }

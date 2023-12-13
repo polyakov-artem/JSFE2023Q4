@@ -20,10 +20,12 @@ export class Slider {
     this.viewport = element.querySelector(`.${classes.viewport}`);
     this.currentSlideIndex = 0;
     this.switchingTime = 500;
-    this.waitingTime = 2000;
+    this.waitingTime = 4000;
     this.currentProgress = 0;
     this.switchTimer;
     this.timeLeftToSwitch = this.waitingTime;
+    this._isStopped = true;
+    this.swipeThreshold = 50;
 
     this._createDots();
     this._setSlidingOptions()
@@ -48,10 +50,52 @@ export class Slider {
   }
 
   _bindEvents() {
-    this.slider.addEventListener("click", (e) => {this._btnClickHandler(e)});
-    // this.viewport.addEventListener("pointerout", (e) => {this._play()});
-    // this.viewport.addEventListener("pointerenter", (e) => {this._stop()});
-    // this.viewport.addEventListener("pointerdown", (e) => {this._stop()});
+    this.slider.addEventListener("click", (e) => {
+      this._btnClickHandler(e)
+    
+    });
+    this.viewport.addEventListener("pointerleave", (e) => {
+      this.play();
+    });
+    this.viewport.addEventListener("pointerenter", (e) => {
+      this.stop()
+    });
+    this.viewport.addEventListener("pointerdown", (e) => {
+      this._swipeHandler(e)}
+    );
+    this.viewport.addEventListener("dragstart", (e) => {
+      e.preventDefault();
+    });
+    this.viewport.addEventListener("drop", (e) => {
+      e.preventDefault();
+    });
+
+    document.addEventListener("keyup", (e) => {
+      if (e.key == "ArrowRight") this.slideRight();
+      if (e.key == "ArrowLeft") this.slideLeft();
+    });
+  }
+
+  _swipeHandler(e){
+    let startX = e.pageX;
+    let endX = startX;
+
+    this.viewport.setPointerCapture(e.pointerId);
+    this.viewport.onpointermove = (e) => {
+      endX = e.pageX
+    };
+
+    this.viewport.onpointerup = (e) => {
+      const diff = startX - endX;
+      if (Math.abs(diff) > this.swipeThreshold) {
+        (diff > 0)? 
+          this.slideRight(): 
+          this.slideLeft();
+      };
+
+      this.viewport.onpointermove = null;
+      this.viewport.onpointerup = null;
+    };
   }
 
   _btnClickHandler(e) {
@@ -82,57 +126,62 @@ export class Slider {
   }
 
   switchSlide(nextSlideIndex) {
-    const prevSlideIndex = this.currentSlideIndex;
-    this.currentSlideIndex = nextSlideIndex;
+    this._changeActiveSlide(nextSlideIndex);
+    this._changeActiveDot(nextSlideIndex);
     this.timeLeftToSwitch = this.waitingTime;
+    this.play()
+  }
+  
+  _changeActiveSlide(nextSlideIndex){
+    this.slidesWrap.style.transform = `translateX(${-nextSlideIndex * 100}%`;
+  }
+  
+  _changeActiveDot(nextSlideIndex){
+    this._resetСurrentProgress();
+    this.dotsWrap.children[this.currentSlideIndex].classList.remove(classes.dotActive);
     
-    this._changeActiveSlide();
-    this._changeActiveDot(prevSlideIndex);
+    this.dotsWrap.children[nextSlideIndex].classList.add(classes.dotActive);
+    this.currentSlideIndex = nextSlideIndex;
   }
 
-  _changeActiveSlide(){
-    this.slidesWrap.style.transform = `translateX(${-this.currentSlideIndex * 100}%`;
+  _resetСurrentProgress(){
+    this._setCurrentProgress("0%");
   }
 
-  _changeActiveDot(prevSlideIndex){
-    this._resetProgress(prevSlideIndex);
-    this.dotsWrap.children[prevSlideIndex].classList.remove(classes.dotActive);
-
-    this.dotsWrap.children[this.currentSlideIndex].classList.add(classes.dotActive);
-    this._startProgressAnimation(this.currentSlideIndex);
-  }
-
-  _resetProgress(dotIndex){
-    this._setProgress("0%", dotIndex);
-  }
-
-  _setProgress(value, dotIndex){
-    const progressBar = this.dotsWrap.children[dotIndex].querySelector(`.${classes.progressBar}`);
-    progressBar.style.transition = `none`;
+  _setCurrentProgress(value){
+    const progressBar = this.dotsWrap.children[this.currentSlideIndex].querySelector(`.${classes.progressBar}`);
+    progressBar.style.transition = `unset`;
     progressBar.style.width = value;
   }
 
-  _startProgressAnimation(dotIndex){
-    const progressBar = this.dotsWrap.children[dotIndex].querySelector(`.${classes.progressBar}`);
+  _startProgressAnimation(){
+    const progressBar = this.dotsWrap.children[this.currentSlideIndex].querySelector(`.${classes.progressBar}`);
+    progressBar.style.width = this._getCurrentProggres();
     progressBar.style.transition = `width ${this.timeLeftToSwitch}ms linear`;
-    setTimeout(()=>{progressBar.style.width = "100%";}, 20)
+    setTimeout( ()=>{progressBar.style.width = "100%";}, 20 )
+
   }
 
   play() {
-    this._startProgressAnimation(this.currentSlideIndex)
-    
-    this.switchTimer = setInterval( () => {
-      this.timeLeftToSwitch -= 100;
-
-      if (this.timeLeftToSwitch <= 0) {
-        this.slideRight();
-      }
-    },
-    100);
+    this._startProgressAnimation();
+    if (this._isStopped) {
+      this.switchTimer = setInterval(() => {
+        this.timeLeftToSwitch -= 100;
+        if (this.timeLeftToSwitch <= 0) {
+          this.slideRight();
+        }
+      }, 100);
+    };
+    this._isStopped = false;
+  }
+  
+  _getCurrentProggres(){
+    return Math.round(100 - (this.timeLeftToSwitch / this.waitingTime) * 100) + "%"
   }
 
   stop(){
-    clearTimeout(this.switchTimer);
-    this._setActiveProgress(`${Math.round(this.timeLeftToSwitch/this.waitingTime)*100}%`)
+    clearInterval(this.switchTimer);
+    this._setCurrentProgress(this._getCurrentProggres());
+    this._isStopped = true;
   }
 }

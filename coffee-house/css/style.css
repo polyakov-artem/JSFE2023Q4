@@ -614,7 +614,7 @@ body {
 
 .slider__item {
     flex: 0 0 100%;
-    touch-action: none;
+    touch-action: pan-y;
 }
 
 .slider__btn {

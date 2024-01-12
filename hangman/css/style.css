@@ -342,3 +342,28 @@ html {
   opacity: 1;
   visibility: visible;
 }
+
+@media (max-width: 767px) {
+  .main {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .canvas {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .keyboard-btn:not(.keyboard-btn_arbitrary) {
+    height: 3rem;
+    width: 3rem;
+    font-size: 2rem;
+  }
+
+  .word__letter {
+    width: 3rem;
+    height: 3rem;
+    font-size: 3rem;
+  }
+}

@@ -51,6 +51,91 @@ html {
   flex-direction: column;
 }
 
+.h1 {
+  font-family: var(--ff-shantell);
+  font-weight: 400;
+  line-height: 1.1;
+  font-size: 2.5rem;
+  margin: 0;
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  vertical-align: middle;
+}
+
+.btn:disabled {
+  cursor: default;
+}
+
+.keyboard-btn {
+  height: 4rem;
+  width: 4rem;
+  font-size: 3rem;
+  position: relative;
+  text-transform: uppercase;
+  padding-bottom: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 0 var(--black);
+  background-image: url('data:image/gif;base64,R0lGODlhBAAEAIABAAAAAAAAACH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5NUY1OENCRDdDMDYxMUUyOTEzMEE1MEM5QzM0NDVBMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5NUY1OENCRTdDMDYxMUUyOTEzMEE1MEM5QzM0NDVBMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjk1RjU4Q0JCN0MwNjExRTI5MTMwQTUwQzlDMzQ0NUEzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjk1RjU4Q0JDN0MwNjExRTI5MTMwQTUwQzlDMzQ0NUEzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAQAAAQAsAAAAAAQABAAAAgYEEpdoeQUAOw==');
+}
+
+.keyboard-btn:hover:not(:disabled),
+.keyboard-btn:focus:not(:disabled) {
+  outline: none;
+  box-shadow: 0 2px 0 var(--black), 0 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.keyboard-btn:active {
+  top: 4px;
+  padding-bottom: 0px;
+}
+
+.keyboard-btn__inner {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--white);
+  border-radius: 5px;
+  border: 2px solid var(--black);
+}
+
+.keyboard-btn_disabled {
+  top: 4px;
+  padding-bottom: 0px;
+  color: var(--white)
+}
+
+.keyboard-btn_disabled .keyboard-btn__inner {
+  background-color: var(--dark)
+}
+
+.keyboard-btn_arbitrary {
+  width: auto;
+  height: auto;
+  font-size: 1.5rem;
+}
+
+.keyboard-btn_arbitrary .keyboard-btn__inner {
+  padding: 0.2rem 0.5rem;
+}
+
+.game-btn-wrap {
+  min-height: 3rem;
+}
+
 .backdrop {
   position: fixed;
   top: 0;

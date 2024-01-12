@@ -259,6 +259,26 @@ html {
   justify-content: center;
 }
 
+.dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.dialog__title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.dialog__secret-word {
+  text-transform: uppercase;
+  margin: 0;
+  margin: 0 0 2rem;
+}
+
 .backdrop {
   position: fixed;
   top: 0;

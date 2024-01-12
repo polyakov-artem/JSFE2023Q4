@@ -199,6 +199,41 @@ html {
   opacity: 1;
 }
 
+.word {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.word__letter {
+  display: block;
+  position: relative;
+  text-transform: uppercase;
+  width: 4rem;
+  height: 4rem;
+  font-size: 4rem;
+  line-height: 1;
+  text-align: center;
+  display: block;
+}
+
+.word__letter:after {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  border-radius: 5px;
+  background-color: var(--dark);
+}
+
+.word__letter_guessed:after {
+  content: none;
+}
+
 .backdrop {
   position: fixed;
   top: 0;

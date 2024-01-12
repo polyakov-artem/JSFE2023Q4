@@ -1,0 +1,52 @@
+:root {
+  --gray: rgb(100, 100, 100);
+  --white: rgb(255, 255, 255);
+  --black: rgb(0, 0, 0);
+  --dark: rgb(64, 63, 61);
+  --brown: rgb(207, 158, 118);
+  --green: rgba(153, 202, 59);
+
+  --page-background: rgb(225, 212, 201, 1);
+  --ff-shantell: 'Shantell Sans', cursive;
+
+  --page-max-width: 1440px;
+  --page-tablet-width: 768px;
+  --page-min-width: 360px;
+
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.page {
+  min-height: 100%;
+  min-width: var(--page-min-width);
+  background-color: var(--page-background);
+  color: var(--dark);
+  font-family: var(--ff-shantell);
+  font-size: clamp(1.5rem, 1.3571rem + 0.7143vw, 2rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  overflow-x: hidden;
+  /* Prevent adjustments of font size after orientation changes in iOS: */
+  -webkit-text-size-adjust: 100%;
+  /* Change the default tap highlight to be completely transparent in iOS: */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  display: flex;
+  flex-direction: column;
+}

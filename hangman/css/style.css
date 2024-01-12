@@ -178,6 +178,27 @@ html {
   margin: 0 0 1.5rem;
 }
 
+.canvas {
+  position: relative;
+  aspect-ratio: 3296 / 3848;
+}
+
+.canvas__img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.canvas__body-part {
+  opacity: 0;
+  transition: 0.5s ease all;
+}
+
+.canvas__body-part_shown {
+  opacity: 1;
+}
+
 .backdrop {
   position: fixed;
   top: 0;

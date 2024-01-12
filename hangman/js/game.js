@@ -38,6 +38,7 @@ export class Game {
       this._modalInstance = new Modal();
       this._createModalContent();
       this._createDomHeader();
+      this._createDomMain();
     }
   }
 
@@ -120,6 +121,112 @@ export class Game {
     gameBtnWrap.append(newGameBtn);
     counter.append(counterText, counterCurrent);
     document.querySelector("body").prepend(header);
+  }
+
+  _createDomMain() {
+    const main = createDomElement({ tag: "main", classes: classes.main });
+    const canvasColumn = createDomElement({
+      classes: classes.canvasColumn,
+    });
+
+    const canvas = this._createDomCanvas();
+
+    const mainTitle = createDomElement({
+      tag: "h1",
+      classes: [classes.h1, classes.mainTitle],
+      text: "Hangman Game",
+    });
+
+    const wordColumn = createDomElement({ classes: classes.wordColumn });
+    const word = this._createDomWord();
+
+    const hint = createDomElement({
+      tag: "p",
+      classes: [classes.hint, classes.mainHint],
+      text: this._hint,
+    });
+
+    const guesses = createDomElement({
+      tag: "p",
+      classes: [classes.guesses, classes.mainGuesses],
+    });
+
+    const guessesText = createDomElement({
+      tag: "span",
+      classes: classes.guessesText,
+      text: `Осталось попыток: `,
+    });
+
+    const guessesLeft = createDomElement({
+      tag: "span",
+      classes: classes.guessesLeft,
+      text: `${this._attemptsLeft} / ${this._maxAttempts}`,
+    });
+
+    const keyboard = this._createDomKeyboard();
+
+    main.append(canvasColumn, wordColumn);
+    canvasColumn.append(mainTitle, canvas);
+    wordColumn.append(hint, word, guesses, keyboard);
+    guesses.append(guessesText, guessesLeft);
+    document.querySelector(classes.header).after(main);
+  }
+
+  _createDomCanvas() {
+    const canvas = createDomElement({
+      classes: [classes.canvas, classes.mainCanvas],
+    });
+
+    for (let key in canvasImages) {
+      const { attr, classes } = canvasImages[key];
+      const domImg = createDomElement({
+        tag: "img",
+        classes: classes,
+        attr: attr,
+      });
+
+      canvas.append(domImg);
+    }
+
+    return canvas;
+  }
+
+  _createDomWord() {
+    const word = createDomElement({
+      classes: [classes.word, classes.mainWord],
+    });
+
+    for (let char of this._word) {
+      const letter = createDomElement({
+        tag: "span",
+        classes: classes.letter,
+      });
+      word.append(letter);
+    }
+
+    return word;
+  }
+
+  _createDomKeyboard() {
+    const keyboard = createDomElement({ classes: classes.keyboard });
+
+    for (let letter of rusLetters) {
+      const keyboardBtn = createDomElement({
+        tag: "button",
+        classes: [classes.btn, classes.keyboardBtn],
+        attr: { "data-key": letter },
+      });
+
+      const keyboardBtnInner = createDomElement({
+        classes: classes.keyboardBtnInner,
+        text: letter,
+      });
+
+      keyboardBtn.append(keyboardBtnInner);
+      keyboard.append(keyboardBtn);
+    }
+
+    return keyboard;
   }
 
   _bindEvents() {

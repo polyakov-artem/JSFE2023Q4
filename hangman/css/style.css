@@ -136,6 +136,30 @@ html {
   min-height: 3rem;
 }
 
+.header {
+  margin: 0 auto;
+  max-width: var(--page-max-width);
+  display: flex;
+  padding: 1rem;
+  line-height: 1;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  background-color: var(--brown);
+  justify-content: center;
+}
+
+.header__counter {
+  margin: 0 auto 0 0;
+}
+
+.counter__current {
+  white-space: nowrap;
+}
+
 .backdrop {
   position: fixed;
   top: 0;

@@ -37,6 +37,7 @@ export class Game {
     if (isFirstGame) {
       this._modalInstance = new Modal();
       this._createModalContent();
+      this._createDomHeader();
     }
   }
 
@@ -84,6 +85,41 @@ export class Game {
     btn.append(btnInner);
 
     return btn;
+  }
+
+  _createDomHeader() {
+    const header = createDomElement({
+      tag: "header",
+      classes: classes.header,
+    });
+
+    const counter = createDomElement({
+      tag: "p",
+      classes: [classes.counter, classes.headerCounter],
+    });
+
+    const counterText = createDomElement({
+      tag: "span",
+      classes: classes.counterText,
+      text: `Слово: `,
+    });
+
+    const counterCurrent = createDomElement({
+      tag: "span",
+      classes: classes.counterCurrent,
+      text: `${this._wordNumber} / ${this._words.length}`,
+    });
+
+    const gameBtnWrap = createDomElement({
+      classes: classes.gameBtnWrap,
+    });
+
+    const newGameBtn = this._createNewGameBtn();
+
+    header.append(counter, gameBtnWrap);
+    gameBtnWrap.append(newGameBtn);
+    counter.append(counterText, counterCurrent);
+    document.querySelector("body").prepend(header);
   }
 
   _bindEvents() {

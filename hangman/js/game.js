@@ -51,7 +51,6 @@ export class Game {
       this.domCounterCurrent = document.querySelector(
         "." + classes.counterCurrent
       );
-      
     } else {
       this._hideBodyParts();
       this._updateWord();
@@ -294,7 +293,91 @@ export class Game {
     document.addEventListener("click", this._clickHandler.bind(this));
   }
 
-  _clickHandler(e) {}
+  _clickHandler(e) {
+    const domKey = e.target.closest("." + classes.keyboardBtn);
+    if (!domKey) return;
 
-  _keyDownHandler(e) {}
+    const isNewGameBtn = domKey.classList.contains(classes.newGameBtn);
+
+    if (isNewGameBtn) {
+      this.startNewGame();
+    } else {
+      if (!this._playing) return;
+      this.guess(domKey.dataset.key);
+    }
+  }
+
+  _keyDownHandler(e) {
+    if (!this._playing) return;
+    let letter = e.key.toLowerCase();
+    if (letter in engLetters) letter = engLetters[letter];
+
+    const domKey = this.domKeyboard.querySelector(`[data-key="${letter}"`);
+    if (!domKey || domKey.disabled) return;
+
+    this.guess(letter);
+  }
+
+  guess(letter) {
+    if (!this._openedLetters.includes(letter) && this._word.includes(letter)) {
+      this._openLetter(letter);
+    } else {
+      this._attemptsLeft -= 1;
+      this._updateGuesses();
+      this._showPart();
+    }
+
+    this._disableButton(letter);
+    this._checkState();
+  }
+
+  _openLetter(letter) {
+    const letterPositions = this._getLetterPositions(letter);
+    this._openedLetters.push(letter);
+
+    letterPositions.forEach((index) => {
+      this.domLetters[index].textContent = letter;
+      this.domLetters[index].classList.add(classes.letterGuessed);
+    });
+  }
+
+  _getLetterPositions(letter) {
+    const regexp = new RegExp(letter, "gi");
+    return Array.from(this._word.matchAll(regexp), (item) => item.index);
+  }
+
+  _showPart() {
+    const domBodyPart = this.domCanvas.querySelector(
+      `:nth-child(${this._maxAttempts - this._attemptsLeft + 1})`
+    );
+
+    domBodyPart.classList.add(classes.canvasBodyPartShown);
+  }
+
+  _disableButton(letter) {
+    const domKey = this.domKeyboard.querySelector(`[data-key="${letter}"`);
+    domKey.classList.add(classes.keyboardBtnDisabled);
+    domKey.disabled = true;
+  }
+
+  _checkState() {
+    if (this._attemptsLeft == 0) {
+      this.endGame();
+      return;
+    }
+
+    if (this._openedLetters.length === this._wordLetters.size) {
+      this.endGame(true);
+    }
+  }
+
+  endGame(win) {
+    this._playing = false;
+    const winTitle = "Вы победили!";
+    const loseTitle = "Вы проиграли...";
+    const title = win ? winTitle : loseTitle;
+
+    this._updateModal({ title, word: this._word });
+    this._modalInstance.show();
+  }
 }

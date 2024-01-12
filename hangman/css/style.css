@@ -234,6 +234,31 @@ html {
   content: none;
 }
 
+.hint {
+  line-height: 2rem;
+  text-align: center;
+}
+
+.hint:first-letter {
+  text-transform: capitalize;
+
+}
+
+.guesses {
+  text-align: center;
+}
+
+.guesses__left {
+  white-space: nowrap;
+}
+
+.keyboard {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .backdrop {
   position: fixed;
   top: 0;

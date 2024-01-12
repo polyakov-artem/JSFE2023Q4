@@ -39,7 +39,32 @@ export class Game {
       this._createModalContent();
       this._createDomHeader();
       this._createDomMain();
+
+      this.domKeyboard = document.querySelector("." + classes.keyboard);
+      this.domCanvas = document.querySelector("." + classes.canvas);
+      this.domGuessesLeft = document.querySelector("." + classes.guessesLeft);
+      this.domDialogTitle = document.querySelector("." + classes.dialogTitle);
+      this.domHint = document.querySelector("." + classes.hint);
+      this.domDialogSecretWord = document.querySelector(
+        "." + classes.dialogSecretWord
+      );
+      this.domCounterCurrent = document.querySelector(
+        "." + classes.counterCurrent
+      );
+      
+    } else {
+      this._hideBodyParts();
+      this._updateWord();
+      this._updateHint();
+      this._updateGuesses();
+      this._updateKeyboard();
+      this._updateModal();
+      this._updateHeader();
     }
+
+    this.domWord = document.querySelector("." + classes.word);
+    this.domLetters = this.domWord.querySelectorAll("." + classes.letter);
+    console.log("Секретное слово: ", this._word);
   }
 
   _createModalContent() {
@@ -227,6 +252,41 @@ export class Game {
     }
 
     return keyboard;
+  }
+
+  _hideBodyParts() {
+    this.domCanvas
+      .querySelectorAll("." + classes.canvasBodyPart)
+      .forEach((part) => part.classList.remove(classes.canvasBodyPartShown));
+  }
+
+  _updateWord() {
+    this.domWord.replaceWith(this._createDomWord());
+  }
+
+  _updateHint() {
+    this.domHint.textContent = `${this._hint}`;
+  }
+
+  _updateGuesses() {
+    this.domGuessesLeft.textContent = `${this._attemptsLeft} / ${this._maxAttempts}`;
+  }
+  _updateKeyboard() {
+    this.domKeyboard
+      .querySelectorAll("." + classes.keyboardBtn)
+      .forEach((key) => {
+        key.classList.remove(classes.keyboardBtnDisabled);
+        key.disabled = false;
+      });
+  }
+
+  _updateModal({ title = "", word = "" } = {}) {
+    this.domDialogTitle.textContent = title;
+    this.domDialogSecretWord.textContent = `Секретное слово: ${word}`;
+  }
+
+  _updateHeader() {
+    this.domCounterCurrent.textContent = `${this._wordNumber} / ${this._words.length}`;
   }
 
   _bindEvents() {

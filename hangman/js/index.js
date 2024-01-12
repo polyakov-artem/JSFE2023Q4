@@ -1,5 +1,5 @@
-import { Modal } from "./modal.js";
+import { Game } from "./game.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  new Modal();
+  new Game();
 });

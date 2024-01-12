@@ -50,3 +50,67 @@ html {
   display: flex;
   flex-direction: column;
 }
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  pointer-events: none;
+  visibility: hidden;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.5s ease,
+    visibility 0.5s ease;
+}
+
+.backdrop_active {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 0.6;
+}
+
+.modal-block {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.5rem;
+  pointer-events: none;
+}
+
+.modal-block_active {
+  pointer-events: auto;
+}
+
+.modal-block__window {
+  flex: none;
+  width: 100%;
+  max-width: 600px;
+  max-height: calc(100vh - 5rem);
+  position: relative;
+  margin: auto 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transition: transform 0.5s ease,
+    opacity 0.5s ease,
+    visibility 0.5s ease;
+  transform: scale(0.9);
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 1rem;
+  background: var(--page-background)
+}
+
+.modal-block_active .modal-block__window {
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+}

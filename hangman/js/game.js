@@ -36,8 +36,54 @@ export class Game {
 
     if (isFirstGame) {
       this._modalInstance = new Modal();
-    } 
+      this._createModalContent();
+    }
+  }
 
+  _createModalContent() {
+    const modalWindow = document.querySelector("." + modalClasses.modalWindow);
+    const dialog = createDomElement({ classes: classes.dialog });
+    const title = createDomElement({
+      tag: "h2",
+      classes: [classes.h1, classes.dialogTitle],
+    });
+    const secretWord = createDomElement({
+      tag: "p",
+      classes: [classes.dialogSecretWord],
+    });
+
+    const newGameBtn = this._createNewGameBtn();
+    const gameBtnWrap = createDomElement({
+      classes: classes.gameBtnWrap,
+    });
+
+    gameBtnWrap.append(newGameBtn);
+    dialog.append(title, secretWord, gameBtnWrap);
+    modalWindow.append(dialog);
+  }
+
+  _createNewGameBtn() {
+    const btn = createDomElement({
+      tag: "button",
+      classes: [
+        classes.btn,
+        classes.keyboardBtn,
+        classes.keyboardBtnArbitrary,
+        classes.newGameBtn,
+      ],
+      attr: {
+        "data-action": "close-modal",
+      },
+    });
+
+    const btnInner = createDomElement({
+      classes: classes.keyboardBtnInner,
+      text: "Играть заново",
+    });
+
+    btn.append(btnInner);
+
+    return btn;
   }
 
   _bindEvents() {

@@ -190,8 +190,8 @@ export class Game {
     const keyboard = this._createDomKeyboard();
 
     main.append(canvasColumn, wordColumn);
-    canvasColumn.append(mainTitle, canvas);
-    wordColumn.append(hint, word, guesses, keyboard);
+    canvasColumn.append(canvas);
+    wordColumn.append(mainTitle,hint, word, guesses, keyboard);
     guesses.append(guessesText, guessesCounter);
     document.querySelector(classes.header).after(main);
   }

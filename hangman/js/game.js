@@ -31,7 +31,7 @@ export class Game {
     this._wordLetters = new Set(this._word);
     this._openedLetters = [];
     this._maxAttempts = 6;
-    this._attemptsLeft = this._maxAttempts;
+    this._wrongGuesses = 0;
     this._playing = true;
 
     if (isFirstGame) {
@@ -42,7 +42,7 @@ export class Game {
 
       this.domKeyboard = document.querySelector("." + classes.keyboard);
       this.domCanvas = document.querySelector("." + classes.canvas);
-      this.domGuessesLeft = document.querySelector("." + classes.guessesLeft);
+      this.domGuessesCounter = document.querySelector("." + classes.guessesCounter);
       this.domDialogTitle = document.querySelector("." + classes.dialogTitle);
       this.domHint = document.querySelector("." + classes.hint);
       this.domDialogSecretWord = document.querySelector(
@@ -178,13 +178,13 @@ export class Game {
     const guessesText = createDomElement({
       tag: "span",
       classes: classes.guessesText,
-      text: `Осталось попыток: `,
+      text: `Неправильных попыток: `,
     });
 
-    const guessesLeft = createDomElement({
+    const guessesCounter = createDomElement({
       tag: "span",
-      classes: classes.guessesLeft,
-      text: `${this._attemptsLeft} / ${this._maxAttempts}`,
+      classes: classes.guessesCounter,
+      text: `${this._wrongGuesses} / ${this._maxAttempts}`,
     });
 
     const keyboard = this._createDomKeyboard();
@@ -192,7 +192,7 @@ export class Game {
     main.append(canvasColumn, wordColumn);
     canvasColumn.append(mainTitle, canvas);
     wordColumn.append(hint, word, guesses, keyboard);
-    guesses.append(guessesText, guessesLeft);
+    guesses.append(guessesText, guessesCounter);
     document.querySelector(classes.header).after(main);
   }
 
@@ -268,8 +268,9 @@ export class Game {
   }
 
   _updateGuesses() {
-    this.domGuessesLeft.textContent = `${this._attemptsLeft} / ${this._maxAttempts}`;
+    this.domGuessesCounter.textContent = `${this._wrongGuesses} / ${this._maxAttempts}`;
   }
+  
   _updateKeyboard() {
     this.domKeyboard
       .querySelectorAll("." + classes.keyboardBtn)
@@ -322,7 +323,7 @@ export class Game {
     if (!this._openedLetters.includes(letter) && this._word.includes(letter)) {
       this._openLetter(letter);
     } else {
-      this._attemptsLeft -= 1;
+      this._wrongGuesses += 1;
       this._updateGuesses();
       this._showPart();
     }
@@ -348,7 +349,7 @@ export class Game {
 
   _showPart() {
     const domBodyPart = this.domCanvas.querySelector(
-      `:nth-child(${this._maxAttempts - this._attemptsLeft + 1})`
+      `:nth-child(${this._wrongGuesses + 1})`
     );
 
     domBodyPart.classList.add(classes.canvasBodyPartShown);
@@ -361,7 +362,7 @@ export class Game {
   }
 
   _checkState() {
-    if (this._attemptsLeft == 0) {
+    if (this._wrongGuesses >= this._maxAttempts) {
       this.endGame();
       return;
     }

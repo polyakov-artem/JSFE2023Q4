@@ -27,7 +27,7 @@ export const classes = {
   guesses: "guesses",
   mainGuesses: "main__guesses",
   guessesText: "guesses__text",
-  guessesLeft: "guesses__left",
+  guessesCounter: "guesses__counter",
   keyboard: "keyboard",
   btn: "btn",
   keyboardBtn: "keyboard-btn",

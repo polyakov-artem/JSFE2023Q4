@@ -1,0 +1,108 @@
+:root {
+  --green: #d5eeb0;
+  --green-dark: #6da813;
+  --green-dark-70: rgba(108, 168, 19, 0.7);
+  --green-light: rgb(244, 255, 229);
+  --gray: rgb(156, 156, 156);
+  --blue-lava: #32516a;
+  --blue-lava-70: rgba(50, 81, 106, 0.70);
+  --planetarium: #226eab;
+
+  --red: rgb(207, 55, 39);
+
+  --white: #ffffff;
+  --white-70: rgba(255, 255, 255, 0.7);
+  --black: #000000;
+  --ff-nunito: "Nunito", sans-serif;
+
+  --page-max-width: 1440px;
+  --page-tablet-width: 768px;
+  --page-min-width: 500px;
+}
+
+.light-theme {
+  --page-bg-color: var(--white);
+  --text-color: var(--blue-lava);
+  --sidebar-color: var(--green);
+  --btn-bg: var(--text-color);
+  --btn-text: var(--page-bg-color);
+  --btn-text-hover: var(--page-bg-color);
+  --btn-outline-focus: var(--blue-lava-70);
+  --btn-bg-hover: var(--planetarium);
+  --btn-disabled: var(--gray);
+  --list-link-bg-color: var(--green-light);
+}
+
+.dark-theme {
+  --page-bg-color: #171615;
+  --text-color: var(--white);
+  --sidebar-color: var(--blue-lava);
+  --btn-bg: var(--text-color);
+  --btn-text: var(--page-bg-color);
+  --btn-text-hover: var(--text-color);
+  --btn-outline-focus: var(--white-70);
+  --btn-bg-hover: var(--planetarium);
+  --btn-disabled: var(--gray);
+  --list-link-bg-color: var(--green-light);
+  --list-link-bg-color: var(--blue-lava);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.page {
+  min-height: 100%;
+  min-width: var(--page-min-width);
+  background-color: var(--page-bg-color);
+  color: var(--text-color);
+  font-family: var(--ff-nunito);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 160%;
+  overflow-x: hidden;
+}
+
+.h1 {
+  font-size: 2.488rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.h2 {
+  font-size: 2.074rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.h3 {
+  font-size: 1.728rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.h4 {
+  font-size: 1.44rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.h5 {
+  font-size: 1.2rem;
+  line-height: 1.2;
+  margin: 0;
+}

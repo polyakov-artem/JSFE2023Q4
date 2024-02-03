@@ -47,6 +47,23 @@
   --list-link-bg-color: var(--blue-lava);
 }
 
+.dark-theme .list__img,
+.dark-theme .results__img {
+  filter: invert();
+}
+
+.dark-theme .sound-btn {
+  background-image: url("./../assets/svg/sound-enable_light.svg");
+}
+
+.dark-theme .sound-btn_sound-off {
+  background-image: url("./../assets/svg/sound-disable_light.svg");
+}
+
+.dark-theme .game__main {
+  background: url("./../assets/img/bg-dark.jpg") no-repeat bottom / cover;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;

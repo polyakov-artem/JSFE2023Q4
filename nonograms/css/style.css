@@ -359,3 +359,65 @@ html {
 .dialog__title {
   margin-bottom: 1.5rem;
 }
+
+.game {
+  display: grid;
+  grid-template-areas: "selector header"
+    "selector main";
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: auto 1fr;
+  position: relative;
+  min-height: 100vh;
+  transition: 0.3s grid-template-columns ease;
+  overflow: hidden;
+}
+
+.game_selector-open .selector {
+  transform: translateX(0);
+}
+
+.game__main {
+  grid-area: main;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid var(--sidebar-color);
+  border-top: none;
+  background: url("./../assets/img/bg.jpg") no-repeat bottom / cover;
+}
+
+.game__title {
+  margin-bottom: 1.5rem;
+  text-transform: capitalize;
+}
+
+.game__timer {
+  margin: 0 auto 3rem;
+  margin-bottom: auto;
+}
+
+.game__table {
+  margin: 1.5rem auto 3rem;
+}
+
+.game__controls {
+  margin-top: auto;
+  display: flex;
+  gap: 1rem 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  gap: 1.25rem;
+  padding: 0 1.25rem;
+  align-items: center;
+  justify-content: flex-end;
+  height: 4rem;
+  background-color: var(--sidebar-color);
+  grid-area: header;
+}

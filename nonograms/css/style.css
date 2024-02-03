@@ -528,3 +528,134 @@ html {
 .list__field-size {
   margin: 0;
 }
+
+.table {
+  background-color: var(--white);
+  box-shadow: 0 0 0 15px white;
+  color: var(--black);
+  display: grid;
+  grid-template-areas:
+    "free-space vertical-hints"
+    "horizontal-hints field";
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  border: 2px solid var(--black);
+}
+
+.table__row {
+  display: flex;
+}
+
+.table__cell {
+  width: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  line-height: 0;
+  box-sizing: content-box;
+  user-select: none;
+  transition: 0.3s;
+}
+
+.free-space {
+  grid-area: free-space;
+  border-bottom: 2px solid var(--black);
+  border-right: 2px solid var(--black);
+}
+
+.h-hints {
+  grid-area: horizontal-hints;
+  border-right: 2px solid var(--black);
+}
+
+.v-hints {
+  grid-area: vertical-hints;
+  display: flex;
+  border-bottom: 2px solid var(--black);
+}
+
+.v-hints__column {
+  display: flex;
+  flex-direction: column;
+}
+
+.field__cell {
+  cursor: pointer;
+}
+
+.field__cell_checked {
+  background-color: var(--black);
+}
+
+.field__cell_crossed:after {
+  display: block;
+  content: "🞨";
+  color: var(--black);
+  font-size: 25px;
+}
+
+.h-hints__cell:not(:last-child),
+.field__cell:not(:last-child) {
+  border-right: 1px solid var(--black);
+}
+
+.field__cell:nth-child(5n):not(:last-child) {
+  border-right: 2px solid var(--black);
+}
+
+.v-hints__column:not(:last-child) {
+  border-right: 1px solid var(--black);
+}
+
+.v-hints__column .v-hints__cell:not(:last-child) {
+  border-bottom: 1px solid var(--black);
+}
+
+.v-hints__column:nth-child(5n):not(:last-child) {
+  border-right: 2px solid var(--black);
+}
+
+.h-hints__row:not(:last-child),
+.field__row:not(:last-child) {
+  border-bottom: 1px solid var(--black);
+}
+
+.h-hints__row:nth-child(5n):not(:last-child),
+.field__row:nth-child(5n):not(:last-child) {
+  border-bottom: 2px solid var(--black);
+}
+
+.results {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  height: auto;
+  text-align: center;
+}
+
+.results__cell {
+  border: 1px solid var(--text-color);
+  padding: 0.5rem;
+}
+
+.results__cell::first-letter {
+  text-transform: capitalize;
+}
+
+.results__header {
+  background: var(--sidebar-color);
+  color: var(--text-color);
+}
+
+.results__img-cell {
+  width: 80px;
+  text-align: center;
+}
+
+.results__img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}

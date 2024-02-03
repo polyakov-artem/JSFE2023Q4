@@ -300,3 +300,62 @@ html {
 .hamburger_type_slider.hamburger_active .hamburger__inner::after {
   transform: translate3d(0, -18px, 0) rotate(-90deg);
 }
+
+.modal-block {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.5rem;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.5s ease;
+}
+
+.modal-block_active {
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+}
+
+.modal-block__window {
+  flex: none;
+  width: 100%;
+  max-width: 600px;
+  max-height: calc(100vh - 5rem);
+  position: relative;
+  margin: auto 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transition: transform 0.5s ease,
+    opacity 0.5s ease,
+    visibility 0.5s ease;
+  transform: scale(0.9);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-block_active .modal-block__window {
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  border: 2px solid var(--text-color);
+  background: var(--page-bg-color);
+  border-radius: 1rem;
+}
+
+.dialog__title {
+  margin-bottom: 1.5rem;
+}

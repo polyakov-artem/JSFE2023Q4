@@ -676,3 +676,23 @@ html {
   height: 30px;
   object-fit: contain;
 }
+
+@media (max-width: 950px) {
+  .game {
+    grid-template-columns: 0 1fr;
+  }
+
+  .selector {
+    transform: translateX(-100%);
+  }
+
+  .selector__hamburger-box {
+    display: flex;
+  }
+}
+
+@media (max-width: 650px) {
+  .table__cell {
+    width: 18px;
+  }
+}

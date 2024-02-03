@@ -156,3 +156,57 @@ html {
 .theme-switcher__slider::before {
   border-radius: 50%;
 }
+
+.btn {
+  display: inline-block;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  vertical-align: middle;
+}
+
+.btn:disabled {
+  cursor: default;
+}
+
+.game-btn {
+  border-radius: 5px;
+  color: var(--btn-text);
+  position: relative;
+  padding: 0.5rem 1rem;
+  transition: 0.3s;
+  font-weight: bold;
+  background-color: var(--btn-bg);
+}
+
+.game-btn:focus {
+  box-shadow: 0 0 0 3px var(--btn-outline-focus);
+  outline: none;
+}
+
+.game-btn:not(:disabled):hover {
+  background-color: var(--btn-bg-hover);
+  color: var(--btn-text-hover);
+}
+
+.game-btn:disabled {
+  color: var(--btn-disabled);
+}
+
+.sound-btn {
+  background: no-repeat center / 80%;
+  background-image: url("./../assets/svg/sound-enable_dark.svg");
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.sound-btn_sound-off {
+  background: no-repeat center / 80%;
+  background-image: url("./../assets/svg/sound-disable_dark.svg");
+}

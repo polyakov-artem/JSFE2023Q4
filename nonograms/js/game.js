@@ -377,7 +377,7 @@ export class Game {
             cell.textContent = level;
             break;
           case "Time":
-            cell.textContent = timerValue + " seconds";
+            cell.textContent = this.getTimeInFormat(timerValue);
             break;
         }
         row.append(cell);
@@ -459,9 +459,13 @@ export class Game {
 
   setTimerValue(timerValue) {
     this.timerValue = timerValue;
+    this.timerDom.textContent = this.getTimeInFormat(timerValue);
+  }
+
+  getTimeInFormat(timerValue) {
     const minutes = String(Math.floor(timerValue / 60)).padStart(2, "0");
     const seconds = String(timerValue - minutes * 60).padStart(2, "0");
-    this.timerDom.textContent = `${minutes}:${seconds}`;
+    return `${minutes}:${seconds}`;
   }
 
   getFieldDom() {
@@ -611,18 +615,18 @@ export class Game {
     table.querySelectorAll(`.${classes.hHintsRow}`).forEach((row, rowIndex) => {
       const domCells = [...row.children].reverse();
 
-      hHintsArr[rowIndex].reverse().forEach(
-        (hint, index) => (domCells[index].textContent = hint)
-      );
+      hHintsArr[rowIndex]
+        .reverse()
+        .forEach((hint, index) => (domCells[index].textContent = hint));
     });
 
     table
       .querySelectorAll(`.${classes.vHintsColumn}`)
       .forEach((col, colIndex) => {
         const domCells = [...col.children].reverse();
-        vHintsArr[colIndex].reverse().forEach(
-          (hint, index) => (domCells[index].textContent = hint)
-        );
+        vHintsArr[colIndex]
+          .reverse()
+          .forEach((hint, index) => (domCells[index].textContent = hint));
       });
   }
 

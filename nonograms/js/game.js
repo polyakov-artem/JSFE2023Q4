@@ -654,7 +654,7 @@ export class Game {
     if (!this.timerId) this.startTimer();
 
     cell.classList.remove(classes.fieldCellChecked);
-    cell.classList.add(classes.fieldCellCrossed);
+    cell.classList.toggle(classes.fieldCellCrossed);
     if (!this.soundDisabled) sounds.cross.play();
   }
 

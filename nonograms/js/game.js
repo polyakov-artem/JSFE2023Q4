@@ -656,6 +656,8 @@ export class Game {
     cell.classList.remove(classes.fieldCellChecked);
     cell.classList.toggle(classes.fieldCellCrossed);
     if (!this.soundDisabled) sounds.cross.play();
+
+    this.checkState();
   }
 
   checkState() {

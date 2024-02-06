@@ -1,5 +1,5 @@
 import { classes, data } from "./constants.js";
-import { createDomElement, getRandom, shuffleArray } from "./utils.js";
+import { createDomElement, getRandom } from "./utils.js";
 import { Modal } from "./modal.js";
 import { Hamburger } from "./hamburger.js";
 import { ThemeSwitcher } from "./theme-switcher.js";
@@ -415,7 +415,7 @@ export class Game {
         .filter((str) => str.length > 0)
         .map((str) => str.length);
 
-      return shuffleArray(rowHints);
+      return rowHints;
     });
   }
 
@@ -435,7 +435,7 @@ export class Game {
         .filter((str) => str.length > 0)
         .map((str) => str.length);
 
-      hints.push(shuffleArray(colHints));
+      hints.push(colHints);
     }
 
     return hints;
@@ -610,7 +610,8 @@ export class Game {
   writeHints(table, hHintsArr, vHintsArr) {
     table.querySelectorAll(`.${classes.hHintsRow}`).forEach((row, rowIndex) => {
       const domCells = [...row.children].reverse();
-      hHintsArr[rowIndex].forEach(
+
+      hHintsArr[rowIndex].reverse().forEach(
         (hint, index) => (domCells[index].textContent = hint)
       );
     });
@@ -619,7 +620,7 @@ export class Game {
       .querySelectorAll(`.${classes.vHintsColumn}`)
       .forEach((col, colIndex) => {
         const domCells = [...col.children].reverse();
-        vHintsArr[colIndex].forEach(
+        vHintsArr[colIndex].reverse().forEach(
           (hint, index) => (domCells[index].textContent = hint)
         );
       });

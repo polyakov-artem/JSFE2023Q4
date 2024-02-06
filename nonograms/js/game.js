@@ -479,7 +479,10 @@ export class Game {
 
   bindEvents() {
     document.addEventListener("click", this.clickHandler.bind(this));
-    document.addEventListener("contextmenu", this.clickHandler.bind(this));
+    document.addEventListener(
+      "contextmenu",
+      this.contextMenuHandler.bind(this)
+    );
   }
 
   clickHandler(e) {
@@ -635,19 +638,24 @@ export class Game {
     if (this.gameEnded) return;
     if (!this.timerId) this.startTimer();
 
-    const isRightButton = e.button == 2;
-
-    if (isRightButton) {
-      cell.classList.remove(classes.fieldCellChecked);
-      cell.classList.add(classes.fieldCellCrossed);
-      if (!this.soundDisabled) sounds.cross.play();
-    } else {
-      cell.classList.remove(classes.fieldCellCrossed);
-      cell.classList.toggle(classes.fieldCellChecked);
-      if (!this.soundDisabled) sounds.check.play();
-    }
+    cell.classList.remove(classes.fieldCellCrossed);
+    cell.classList.toggle(classes.fieldCellChecked);
+    if (!this.soundDisabled) sounds.check.play();
 
     this.checkState();
+  }
+
+  contextMenuHandler(e) {
+    const cell = e.target.closest(`.${classes.fieldCell}`);
+    if (!cell) return;
+
+    e.preventDefault();
+    if (this.gameEnded) return;
+    if (!this.timerId) this.startTimer();
+
+    cell.classList.remove(classes.fieldCellChecked);
+    cell.classList.add(classes.fieldCellCrossed);
+    if (!this.soundDisabled) sounds.cross.play();
   }
 
   checkState() {

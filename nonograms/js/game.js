@@ -113,7 +113,7 @@ export class Game {
     const solveBtn = createDomElement({
       tag: "button",
       classes: [classes.btn, classes.gameBtn, classes.solveGameBtn],
-      text: "Solve game",
+      text: "Solution",
     });
     const randomBtn = createDomElement({
       tag: "button",
@@ -128,7 +128,7 @@ export class Game {
     const loadBtn = createDomElement({
       tag: "button",
       classes: [classes.btn, classes.gameBtn, classes.loadGameBtn],
-      text: "Load saved game",
+      text: "Continue last game",
     });
     const recordsBtn = createDomElement({
       tag: "button",

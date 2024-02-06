@@ -600,17 +600,16 @@ html {
 
 .field__cell {
   cursor: pointer;
+  background: no-repeat center;
+  background-size: 12px;
 }
 
 .field__cell_checked {
   background-color: var(--black);
 }
 
-.field__cell_crossed:after {
-  display: block;
-  content: "🞨";
-  color: var(--black);
-  font-size: 25px;
+.field__cell_crossed {
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IS0tDQogLy8gMTZweGxzIChjKSBieSBQYXVsIG1hY2tlbnppZSA8cGF1bEB3aGF0c3BhdWxkb2luZy5jb20+DQogLy8NCiAvLyAxNnB4bHMgaXMgbGljZW5zZWQgdW5kZXIgYQ0KIC8vIENyZWF0aXZlIENvbW1vbnMgQXR0cmlidXRpb24tU2hhcmVBbGlrZSA0LjAgSW50ZXJuYXRpb25hbCBMaWNlbnNlLg0KIC8vDQogLy8gWW91IHNob3VsZCBoYXZlIHJlY2VpdmVkIGEgY29weSBvZiB0aGUgbGljZW5zZSBhbG9uZyB3aXRoIHRoaXMNCiAvLyB3b3JrLiBJZiBub3QsIHNlZSA8aHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnktc2EvNC4wLz4uDQotLT4NCg0KPHN2ZyBmaWxsPSIjMDAwMDAwIiB3aWR0aD0iODAwcHgiIGhlaWdodD0iODAwcHgiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCiAgICA8cGF0aCBkPSJNMCAxNC41NDVMMS40NTUgMTYgOCA5LjQ1NSAxNC41NDUgMTYgMTYgMTQuNTQ1IDkuNDU1IDggMTYgMS40NTUgMTQuNTQ1IDAgOCA2LjU0NSAxLjQ1NSAwIDAgMS40NTUgNi41NDUgOHoiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPg0KPC9zdmc+");
 }
 
 .h-hints__cell:not(:last-child),

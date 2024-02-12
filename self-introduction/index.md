@@ -1,4 +1,4 @@
-[Link to self-introduction video](https://github.com/rolling-scopes-school/tasks/tree/master/stage1/modules/self-introduction)
+[Self-introduction video](https://youtu.be/3UgwddcE-Xg)
 
 ## Transcription
 

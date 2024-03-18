@@ -1,4 +1,4 @@
-import { LevelsData, UserData } from '../../types/types';
+import { LevelsData, RoundData, SentenceData, UserData } from '../../types/types';
 
 export class AppModel {
   currentLevel: number;
@@ -52,81 +52,88 @@ export class AppModel {
   }
 
   // game info
-  get numOfLevels() {
+  get numOfLevels(): number {
     return this.levelsData.length;
   }
 
-  get currentSentenceWords() {
+  get currentSentenceWords(): string[] {
     return this.currentSentenceText.split(' ');
   }
 
-  get currentSentenceText() {
+  get currentSentenceText(): string {
     const sentenceData = this.currentSentenceData;
     return sentenceData.textExample;
   }
 
-  get currentSentenceTranslate() {
+  get currentSentenceTranslate(): string {
     const sentenceData = this.currentSentenceData;
     return sentenceData.textExampleTranslate;
   }
 
-  get currentSentenceAudio() {
+  get currentSentenceAudio(): string {
     const sentenceData = this.currentSentenceData;
     return sentenceData.audioExample;
   }
 
-  get currentRoundImg() {
+  get currentRoundImg(): string {
     const roundData = this.currentRoundData;
     return roundData.roundResult.cutSrc;
   }
 
-  get currentRoundSentences() {
+  get currentRoundSentences(): SentenceData[] {
     const roundData = this.currentRoundData;
     return roundData.sentences;
   }
-  get currentRoundData() {
+  get currentRoundData(): RoundData {
     return this.levelsData[this.currentLevel].rounds[this.currentRound];
   }
 
-  get currentSentenceData() {
+  get currentSentenceData(): SentenceData {
     return this.currentRoundSentences[this.currentSentenceNumber];
   }
 
   // user data
-  get name() {
+  get name(): string {
     return this.userData.name;
   }
-  get surname() {
+  get surname(): string {
     return this.userData.surname;
   }
 
-  get lastPassedRound() {
+  get lastPassedRound(): { lastLevel: number; lastRound: number } {
     return this.userData.lastPassedRound;
   }
 
-  get passedRounds() {
+  get passedRounds(): number[][] {
     return this.userData.passedRounds;
   }
 
-  get passedLevels() {
+  get passedLevels(): number[] {
     return this.userData.passedLevels;
   }
 
-  get currentNumOfRounds() {
+  get currentNumOfRounds(): number {
     return this.levelsData[this.currentLevel].rounds.length;
   }
 
-  get currentLevelPassedRounds() {
+  get currentLevelPassedRounds(): number[] {
     return this.passedRounds[this.currentLevel];
   }
+  get currentImgCaption(): string {
+    const {
+      author = '',
+      name = '',
+      year = '',
+    }: { author: string; name: string; year: string } = this.currentRoundData.roundResult;
 
-  get currentImgCaption() {
-    const { author = '', name = '', year = '' } = this.currentRoundData.roundResult;
-
-    const authorData = author.split(', ');
-    const authorName = authorData[1];
-    let authorSurname = authorData[0].toLowerCase();
-    authorSurname = authorSurname.slice(0, 1).toUpperCase() + authorSurname.slice(1);
-    return `${authorName} ${authorSurname} - ${name} (${year})`;
+    const authorInfo = author.split(', ');
+    if (authorInfo.length === 1) {
+      return `${authorInfo[0]} - ${name} (${year})`;
+    } else {
+      const authorName = authorInfo[1];
+      let authorSurname = authorInfo[0].toLowerCase();
+      authorSurname = authorSurname.slice(0, 1).toUpperCase() + authorSurname.slice(1);
+      return `${authorName} ${authorSurname} - ${name} (${year})`;
+    }
   }
 }

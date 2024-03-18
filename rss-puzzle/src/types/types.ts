@@ -75,3 +75,5 @@ export type PrimaryBtnProps = Omit<CreateDomElementProps, 'tag'> & {
 
 export type LoginLabel = ({ text, inputId }: { text: string; inputId: string }) => HTMLElement;
 export type LoginField = ({ name }: { name?: string }) => HTMLElement;
+
+export type AuthData = { name: string; surname: string };

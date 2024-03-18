@@ -60,6 +60,12 @@ export class LoginBlock {
       this.updateFieldState(this.surnameField, errors.surnameError);
       this.updateBtnState(errors);
     });
+    this.loginBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      App.appController.authController.login(this.nameInput.value, this.surnameInput.value);
+      this.clear();
+      return false;
+    });
   }
 
   clear() {

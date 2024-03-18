@@ -1,4 +1,5 @@
-import { INTRO_TEXT, classes } from '../../../common/js/constants';
+import { INTRO_TEXT, classSelectors, classes } from '../../../common/js/constants';
+import { App } from '../../app/app';
 import { createDomElement } from '../../utils/utils';
 export class Intro {
   node!: HTMLElement;
@@ -6,7 +7,7 @@ export class Intro {
     if (!this.node) {
       this.node = this.createNode();
     }
-
+    this.updateView();
     return this.node;
   }
 
@@ -36,12 +37,24 @@ export class Intro {
     });
 
     const column: HTMLElement = createDomElement({ classNames: [classes.introColumn] });
+    const greeting: HTMLElement = createDomElement({
+      tag: 'p',
+      classNames: [classes.h2, classes.introGreeting],
+    });
 
     node.append(container);
     container.append(window);
     window.append(title, subtitle, grid);
     grid.append(img, column);
+    column.append(greeting);
 
     return node;
+  }
+
+  updateView() {
+    const { name, surname } = App.appModel.userData;
+    const greeeting: HTMLElement = this.node.querySelector(classSelectors.introGreeting)!;
+    greeeting.textContent = `Hello, ${name} ${surname}!`;
+    greeeting.classList.add(classes.introGreetingVisible);
   }
 }

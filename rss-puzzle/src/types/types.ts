@@ -5,10 +5,12 @@ export type Dictionary = {
 export type UserData = {
   name: string;
   surname: string;
-  lastPassedRound: { lastLevel: number; lastRound: number };
+  lastPassedRound: LastPassedRound;
   passedLevels: number[];
   passedRounds: number[][];
 };
+
+export type LastPassedRound = { lastLevel?: number; lastRound?: number };
 
 export type LevelsData = LevelData[];
 

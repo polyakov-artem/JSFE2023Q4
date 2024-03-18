@@ -1,12 +1,12 @@
-import { Dictionary } from '../../types/types';
+import { Dictionary, UserData } from '../../types/types';
 
-export const defaultUser = {
+export const defaultUser: UserData = {
   name: '',
   surname: '',
   lastPassedRound: {},
   passedLevels: [],
   passedRounds: [],
-} as const;
+};
 
 export const SEVER_STORAGE_KEY: string = 'rss-puzzle-server';
 export const CLIENT_STORAGE_KEY: string = 'rss-puzzle-client';

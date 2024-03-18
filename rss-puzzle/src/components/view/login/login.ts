@@ -5,7 +5,7 @@ import { LoginBlock } from '../login-block/login-block';
 export class Login {
   node!: HTMLElement;
   loginBlock!: LoginBlock;
-  getNode() {
+  getNode(): HTMLElement {
     if (!this.node) {
       this.node = this.createNode();
     }
@@ -13,10 +13,12 @@ export class Login {
     return this.node;
   }
 
-  createNode() {
-    const node = createDomElement({ tag: 'main', classNames: [classes.login] });
-    const container = createDomElement({ classNames: [classes.loginInner, classes.container] });
-    const window = createDomElement({
+  createNode(): HTMLElement {
+    const node: HTMLElement = createDomElement({ tag: 'main', classNames: [classes.login] });
+    const container: HTMLElement = createDomElement({
+      classNames: [classes.loginInner, classes.container],
+    });
+    const window: HTMLElement = createDomElement({
       classNames: [classes.window, classes.windowTransparent, classes.windowSmall],
     });
 

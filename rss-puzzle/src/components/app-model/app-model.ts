@@ -1,4 +1,4 @@
-import { LevelsData, RoundData, SentenceData, UserData } from '../../types/types';
+import { LastPassedRound, LevelsData, RoundData, SentenceData, UserData } from '../../types/types';
 
 export class AppModel {
   currentLevel: number;
@@ -100,7 +100,7 @@ export class AppModel {
     return this.userData.surname;
   }
 
-  get lastPassedRound(): { lastLevel: number; lastRound: number } {
+  get lastPassedRound(): LastPassedRound | undefined {
     return this.userData.lastPassedRound;
   }
 

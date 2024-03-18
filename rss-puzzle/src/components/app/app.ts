@@ -14,6 +14,6 @@ export class App {
   init() {
     App.appView.init();
     App.appController.init();
-    App.appController.authController.autoLogin();
+    App.appView.page.startPage.redraw();
   }
 }

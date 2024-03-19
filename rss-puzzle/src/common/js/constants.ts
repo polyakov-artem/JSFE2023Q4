@@ -93,6 +93,8 @@ export const classes: Dictionary = {
   pageLogin: 'page_login',
   pageStart: 'page_start',
   pageStatisitcs: 'page_statistics',
+  playbackStatusBtn: 'playback-status-btn',
+  playbackStatusBtnActive: 'playback-status-btn_active',
   playAudioBtn: 'play-audio-btn',
   playAudioBtnActive: 'play-audio-btn_active',
   playAudioBtnInvisible: 'play-audio-btn_invisible',

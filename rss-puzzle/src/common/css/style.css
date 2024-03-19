@@ -19,6 +19,7 @@
   --gray-30: rgb(156, 156, 156, 0.3);
   --light-green: #f7ffd4;
   --green: #6bc900;
+  --green-50: rgba(107, 201, 0, 0.5);
   --blue: #00a2ff;
   --green-20: rgba(107, 201, 0, 0.2);
 
@@ -235,6 +236,21 @@ html {
   background-color: var(--btn-hover-bg);
 }
 
+.playback-status-btn {
+  background-image: url(/src/assets/images/svg-inline/music.svg);
+  cursor: default;
+}
+
+.playback-status-btn:focus {
+  box-shadow: none;
+}
+
+.playback-status-btn_active {
+  animation: playbackRadialBounce 0.4s infinite ease alternate;
+  background-color: var(--icon-btn-checked-bg);
+  background-image: url(/src/assets/images/svg-inline/music-on.svg);
+}
+
 .container {
   width: 100%;
   max-width: var(--page-max-width);
@@ -285,7 +301,7 @@ html {
   justify-content: center;
 }
 
-.intro_fullscreen{
+.intro_fullscreen {
   min-height: 100dvh;
 }
 
@@ -764,5 +780,15 @@ html {
     opacity: 1;
     -webkit-transform: translateZ(0);
     transform: translateZ(0)
+  }
+}
+
+@keyframes playbackRadialBounce {
+  0% {
+    box-shadow: 0 0 0 0 transparent
+  }
+
+  100% {
+    box-shadow: 0 0 0 6px var(--green-50)
   }
 }

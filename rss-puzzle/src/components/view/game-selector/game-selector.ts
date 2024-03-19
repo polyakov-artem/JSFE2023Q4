@@ -77,15 +77,24 @@ export class GameSelector {
   }
 
   updateView(): void {
-    const { numOfLevels, currentLevel, currentRound, currentNumOfRounds } = App.appModel;
+    const {
+      numOfLevels,
+      passedLevels,
+      currentLevel,
+      currentRound,
+      currentNumOfRounds,
+      currentLevelPassedRounds,
+    } = App.appModel;
 
     this.levelSelector.redraw({
       length: numOfLevels,
+      valuesToPass: passedLevels,
       selectValue: `${currentLevel}`,
     });
 
     this.roundSelector.redraw({
       length: currentNumOfRounds,
+      valuesToPass: currentLevelPassedRounds,
       selectValue: `${currentRound}`,
     });
   }

@@ -31,13 +31,14 @@ export class Selector {
 
   redraw({
     length = 0,
+    valuesToPass = [],
     selectValue = 'choose',
   }: { length?: number; valuesToPass?: number[]; selectValue?: string } = {}): void {
     this.node.innerHTML = '';
     this.node.append(this.createOption(this.title, 'choose'));
 
     for (let i = 0; i < length; i += 1) {
-      const text: string = `${i + 1}`;
+      const text: string = valuesToPass.includes(i) ? `${i + 1} (Passed)` : `${i + 1}`;
 
       this.node.append(this.createOption(text, `${i}`));
     }

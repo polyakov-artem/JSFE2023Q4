@@ -6,8 +6,8 @@ export class GamePage {
   game!: Game;
   header!: Header;
   clearPage(): void {
-    const bodyElements = document.querySelectorAll('body > *:not(script)');
-    bodyElements.forEach((element) => element.remove());
+    const bodyElements: NodeListOf<Element> = document.querySelectorAll('body > *:not(script)');
+    bodyElements.forEach((element: Element): void => element.remove());
   }
 
   redraw(): void {
@@ -21,5 +21,7 @@ export class GamePage {
       this.game = new Game();
     }
     document.body.append(this.header.getNode(), this.game.getNode());
+    this.game.gameSelector.updateView();
+    this.game.gameArea.updateView();
   }
 }

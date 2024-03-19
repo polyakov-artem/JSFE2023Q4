@@ -1,10 +1,12 @@
 import { INTRO_TEXT, classSelectors, classes } from '../../../common/js/constants';
+import { AuthData } from '../../../types/types';
 import { App } from '../../app/app';
 import { createDomElement } from '../../utils/utils';
 import { primaryBtn } from '../primary-btn/primary-btn';
+
 export class Intro {
   node!: HTMLElement;
-  getNode() {
+  getNode(): HTMLElement {
     if (!this.node) {
       this.node = this.createNode();
       this.addListeners();
@@ -63,8 +65,8 @@ export class Intro {
     return node;
   }
 
-  updateView() {
-    const { name, surname } = App.appModel.userData;
+  updateView(): void {
+    const { name, surname }: AuthData = App.appModel.userData;
     const greeeting: HTMLElement = this.node.querySelector(classSelectors.introGreeting)!;
     greeeting.textContent = `Hello, ${name} ${surname}!`;
     greeeting.classList.add(classes.introGreetingVisible);

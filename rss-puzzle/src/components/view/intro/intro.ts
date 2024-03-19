@@ -1,14 +1,22 @@
 import { INTRO_TEXT, classSelectors, classes } from '../../../common/js/constants';
 import { App } from '../../app/app';
 import { createDomElement } from '../../utils/utils';
+import { primaryBtn } from '../primary-btn/primary-btn';
 export class Intro {
   node!: HTMLElement;
   getNode() {
     if (!this.node) {
       this.node = this.createNode();
+      this.addListeners();
     }
     this.updateView();
     return this.node;
+  }
+
+  addListeners() {
+    this.node.querySelector(classSelectors.introStartBtn)!.addEventListener('click', () => {
+      App.appController.gameController.gameProgressController.startNewGame();
+    });
   }
 
   createNode(): HTMLElement {
@@ -41,12 +49,16 @@ export class Intro {
       tag: 'p',
       classNames: [classes.h2, classes.introGreeting],
     });
+    const startBtn: HTMLElement = primaryBtn({
+      text: 'Start',
+      classNames: [classes.introStartBtn],
+    });
 
     node.append(container);
     container.append(window);
     window.append(title, subtitle, grid);
     grid.append(img, column);
-    column.append(greeting);
+    column.append(greeting, startBtn);
 
     return node;
   }

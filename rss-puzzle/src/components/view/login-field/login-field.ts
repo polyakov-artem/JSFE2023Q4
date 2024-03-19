@@ -2,11 +2,11 @@ import { classes } from '../../../common/js/constants';
 import { LoginField } from '../../../types/types';
 import { createDomElement } from '../../utils/utils';
 
-export const loginField: LoginField = ({ name = '' }) => {
-  const field = createDomElement({
+export const loginField: LoginField = ({ name = '' }: { name?: string }) => {
+  const field: HTMLElement = createDomElement({
     classNames: [classes.field, classes.loginField, `login-block__${name}-field`],
   });
-  const inputContainer = createDomElement({ classNames: [classes.input] });
+  const inputContainer: HTMLElement = createDomElement({ classNames: [classes.input] });
   const input = createDomElement({
     tag: 'input',
     classNames: [classes.inputControl],
@@ -16,9 +16,12 @@ export const loginField: LoginField = ({ name = '' }) => {
       name: name,
       required: 'true',
     },
-  });
+  }) as HTMLInputElement;
 
-  const validation = createDomElement({ tag: 'p', classNames: [classes.fieldValidation] });
+  const validation: HTMLElement = createDomElement({
+    tag: 'p',
+    classNames: [classes.fieldValidation],
+  });
 
   field.append(inputContainer, validation);
   inputContainer.append(input);

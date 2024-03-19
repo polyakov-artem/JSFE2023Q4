@@ -1,4 +1,5 @@
 import { CLIENT_STORAGE_KEY } from '../../../common/js/constants';
+import { App } from '../../app/app';
 import { Server } from '../../server/server';
 import { AuthController } from '../auth-controller/auth-controller';
 import { GameController } from '../game-controller/game-controller';
@@ -12,6 +13,7 @@ export class AppController {
   init() {
     this.server = new Server();
     this.storage = new StorageService(CLIENT_STORAGE_KEY);
+    App.appModel.levelsData = this.server.getLevelsData();
     this.authController = new AuthController();
     this.gameController = new GameController();
   }

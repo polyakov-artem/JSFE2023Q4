@@ -1,8 +1,16 @@
+import { AuthData, LastPassedRound, UserData } from '../../../types/types';
 import { App } from '../../app/app';
 
 export class GameProgressController {
   startNewGame(): void {
-    App.appView.page.gamePage.redraw();
+    const lastPassedRound: LastPassedRound = App.appModel.lastPassedRound;
+
+    if (lastPassedRound.lastLevel !== undefined && lastPassedRound.lastRound !== undefined) {
+      App.appView.page.continuePage.redraw();
+      return;
+    }
+
+    this.autoSelectNextGame();
   }
 
   setGameState(level: number, round: number, sentence = 0): void {
@@ -10,11 +18,54 @@ export class GameProgressController {
     App.appModel.currentRound = round;
     App.appModel.currentSentenceNumber = sentence;
   }
+
   selectGame(level: number, round: number): void {
     this.setGameState(level, round);
     App.appModel.isRoundEnded = false;
     App.appModel.lastRoundResults = { resolved: [], notResolved: [] };
     App.appView.page.gamePage.redraw();
+  }
+
+  autoSelectNextGame(): void {
+    const lastPassedRound: LastPassedRound = App.appModel.lastPassedRound;
+
+    const { lastLevel, lastRound }: { lastLevel?: number; lastRound?: number } = lastPassedRound;
+    const { passedLevels, numOfLevels }: { passedLevels: number[]; numOfLevels: number } =
+      App.appModel;
+
+    if (lastRound === undefined || lastLevel === undefined) {
+      this.selectGame(0, 0);
+      return;
+    }
+
+    if (passedLevels.length === numOfLevels) {
+      this.wipeUserProgress();
+      this.selectGame(0, 0);
+      return;
+    }
+
+    const gameLevelsArray: number[] = this.getLevelsArray(numOfLevels);
+    const nextLevel: number = this.getNextItem(gameLevelsArray, passedLevels, lastLevel);
+    const gameRoundsArray: number[] = this.getRoundsArray(nextLevel);
+    const nextRound: number = this.getNextItem(
+      gameRoundsArray,
+      this.getPassedRounds(nextLevel) ?? [],
+      lastRound,
+    );
+
+    this.selectGame(nextLevel, nextRound);
+  }
+
+  wipeUserProgress(): void {
+    const { name, surname }: AuthData = App.appModel;
+    App.appController.server.wipeUserProgress(name, surname);
+    App.appModel.userData = App.appController.server.getUserData(name, surname)!;
+  }
+
+  getNextItem(arr: number[], itemsToPass: number[], startPos: number): number {
+    const slicedArr: number[] = arr.slice(startPos).concat(arr.slice(0, startPos));
+    const nextItems: number[] = slicedArr.filter((el) => !itemsToPass.includes(el));
+    return nextItems[0];
   }
 
   getLevelsArray(numOfLevels: number): number[] {
@@ -35,5 +86,32 @@ export class GameProgressController {
 
   getPassedRounds(level: number): number[] {
     return App.appModel.passedRounds[level];
+  }
+  saveProgress(): void {
+    const {
+      currentLevel,
+      currentRound,
+      userData,
+    }: { currentLevel: number; currentRound: number; userData: UserData } = App.appModel;
+    const { passedLevels, passedRounds }: { passedLevels: number[]; passedRounds: number[][] } =
+      userData;
+
+    if (passedRounds[currentLevel] === undefined) {
+      passedRounds[currentLevel] = [];
+    }
+
+    if (!passedRounds[currentLevel].includes(currentRound)) {
+      passedRounds[currentLevel].push(currentRound);
+    }
+
+    if (
+      passedRounds[currentLevel].length === this.getNumOfRounds(currentLevel) &&
+      !passedLevels.includes(currentLevel)
+    ) {
+      passedLevels.push(currentLevel);
+    }
+
+    userData.lastPassedRound = { lastLevel: currentLevel, lastRound: currentRound };
+    App.appController.server.saveUserData(userData);
   }
 }

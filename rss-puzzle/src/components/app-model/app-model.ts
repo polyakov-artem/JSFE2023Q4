@@ -17,7 +17,7 @@ export class AppModel {
     this.userData = {
       name: '',
       surname: '',
-      lastPassedRound: { lastLevel: 0, lastRound: 0 },
+      lastPassedRound: {},
       passedLevels: [],
       passedRounds: [],
     };
@@ -100,7 +100,7 @@ export class AppModel {
     return this.userData.surname;
   }
 
-  get lastPassedRound(): LastPassedRound | undefined {
+  get lastPassedRound(): LastPassedRound {
     return this.userData.lastPassedRound;
   }
 

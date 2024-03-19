@@ -56,6 +56,29 @@ export class GameProgressController {
     this.selectGame(nextLevel, nextRound);
   }
 
+  solveSentence(isSolved: boolean): void {
+    const { currentSentenceNumber, currentRoundSentences, isRoundEnded, lastRoundResults } =
+      App.appModel;
+    const gameView = App.appView.page.gamePage.game;
+    if (isRoundEnded) return;
+
+    gameView.gameArea.solveSentence();
+
+    isSolved
+      ? lastRoundResults.resolved.push(currentSentenceNumber)
+      : lastRoundResults.notResolved.push(currentSentenceNumber);
+
+    if (currentSentenceNumber === currentRoundSentences.length - 1) {
+      App.appModel.isRoundEnded = true;
+      gameView.gameArea.gameButtons.updateView();
+      this.saveProgress();
+      return;
+    }
+
+    App.appModel.currentSentenceNumber += 1;
+    gameView.gameArea.updateSentenceRelated();
+  }
+
   wipeUserProgress(): void {
     const { name, surname }: AuthData = App.appModel;
     App.appController.server.wipeUserProgress(name, surname);

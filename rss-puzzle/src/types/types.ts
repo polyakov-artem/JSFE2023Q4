@@ -79,3 +79,50 @@ export type LoginLabel = ({ text, inputId }: { text: string; inputId: string }) 
 export type LoginField = ({ name }: { name?: string }) => HTMLElement;
 
 export type AuthData = { name: string; surname: string };
+
+export type PlayFnProps = {
+  src?: string;
+  startPlayingCb: () => void;
+  endPlayingCb: () => void;
+  errorCb: () => void;
+};
+
+export type AddListenersForAudio = (
+  startPlayingCb: () => void,
+  endPlayingCb: () => void,
+  errorCb: () => void,
+) => void;
+
+export type IconBtnFn = ({
+  text,
+  classNames,
+  disabled,
+  attr,
+}: {
+  text?: string;
+  classNames?: string[];
+  disabled?: boolean;
+  attr?: Dictionary;
+}) => HTMLElement;
+
+export type PlayAudioBtnFn = ({
+  classNames,
+  isSmall,
+  attr,
+  src,
+}: {
+  classNames?: string[];
+  isSmall?: boolean;
+  attr?: Dictionary;
+  src?: string;
+}) => HTMLElement;
+
+export type ResultsFn = ({
+  type,
+  list,
+}: {
+  type: 'error' | 'success';
+  list: number[];
+}) => HTMLElement;
+
+export type ThumbnailFn = ({ caption, src }: { caption?: string; src?: string }) => HTMLElement;

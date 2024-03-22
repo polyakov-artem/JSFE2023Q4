@@ -1,0 +1,4 @@
+#!/bin/sh
+cd async-race
+npm run ci:format
+npm run lint

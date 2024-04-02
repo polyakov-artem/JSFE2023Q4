@@ -769,6 +769,7 @@ html {
 
 .modal-window__text {
   font-size: 3rem;
+  line-height: 1.2;
 }
 
 @media (max-width: 800px) {

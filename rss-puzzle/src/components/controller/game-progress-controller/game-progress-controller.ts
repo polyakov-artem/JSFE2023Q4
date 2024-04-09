@@ -29,7 +29,7 @@ export class GameProgressController {
   autoSelectNextGame(): void {
     const lastPassedRound: LastPassedRound = App.appModel.lastPassedRound;
 
-    const { lastLevel, lastRound }: { lastLevel?: number; lastRound?: number } = lastPassedRound;
+    const { lastLevel, lastRound }: LastPassedRound = lastPassedRound;
     const { passedLevels, numOfLevels }: { passedLevels: number[]; numOfLevels: number } =
       App.appModel;
 

@@ -29,7 +29,7 @@ export class GameSelector {
       const level: string = this.levelSelector.getNode().value;
 
       if (level === 'choose') {
-        this.roundSelector.redraw();
+        this.roundSelector.redraw({});
         return;
       }
 

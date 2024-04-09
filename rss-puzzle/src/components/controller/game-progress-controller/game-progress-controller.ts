@@ -115,9 +115,7 @@ export class GameProgressController {
     const { currentLevel, currentRound, userData }: AppModel = App.appModel;
     const { passedLevels, passedRounds }: UserData = userData;
 
-    if (passedRounds[currentLevel] === undefined) {
-      passedRounds[currentLevel] = [];
-    }
+    passedRounds[currentLevel] ??= [];
 
     if (!passedRounds[currentLevel].includes(currentRound)) {
       passedRounds[currentLevel].push(currentRound);

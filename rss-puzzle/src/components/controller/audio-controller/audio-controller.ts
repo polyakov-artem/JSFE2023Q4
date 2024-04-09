@@ -1,6 +1,6 @@
 import { AddListenersForAudio, PlayFnProps } from '../../../types/types';
 
-export class AudioContoller {
+export class AudioController {
   audio!: HTMLAudioElement | null;
 
   constructor() {

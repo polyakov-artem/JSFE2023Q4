@@ -37,7 +37,7 @@ export class AppView {
       btn.classList.remove(classes.playAudioBtnActive);
       playbackStatusBtn?.classList.remove(classes.playbackStatusBtnActive);
     };
-    App.appController.audioContoller.play({
+    App.appController.audioController.play({
       src: src,
       startPlayingCb,
       endPlayingCb,

@@ -74,8 +74,11 @@ export type PrimaryBtnProps = Omit<CreateDomElementProps, 'tag'> & {
   disabled?: boolean;
 };
 
-export type LoginLabel = ({ text, inputId }: { text: string; inputId: string }) => HTMLElement;
-export type LoginField = ({ name }: { name?: string }) => HTMLElement;
+export type LoginLabel = ({ text, inputId }: LoginLabelParams) => HTMLElement;
+export type LoginLabelParams = { text: string; inputId: string };
+
+export type LoginField = ({ name }: LoginFieldParams) => HTMLElement;
+export type LoginFieldParams = { name?: string };
 
 export type AuthData = { name: string; surname: string };
 

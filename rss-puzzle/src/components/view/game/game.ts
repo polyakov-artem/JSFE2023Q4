@@ -10,10 +10,7 @@ export class Game {
   gameArea!: GameArea;
   hintsControls!: HintsControls;
   getNode(): HTMLElement {
-    if (!this.node) {
-      this.node = this.createNode();
-    }
-
+    this.node ??= this.createNode();
     return this.node;
   }
 

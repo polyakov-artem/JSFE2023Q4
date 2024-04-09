@@ -6,10 +6,7 @@ import { createDomElement, getGridStyles } from '../../utils/utils';
 export class Field {
   node!: HTMLElement;
   getNode(): HTMLElement {
-    if (!this.node) {
-      this.node = this.createNode();
-    }
-
+    this.node ??= this.createNode();
     return this.node;
   }
 

@@ -6,10 +6,7 @@ export class Statistics {
   node!: HTMLElement;
   resultsBlock!: ResultBlocks;
   getNode(): HTMLElement {
-    if (!this.node) {
-      this.node = this.createNode();
-    }
-
+    this.node ??= this.createNode();
     return this.node;
   }
 

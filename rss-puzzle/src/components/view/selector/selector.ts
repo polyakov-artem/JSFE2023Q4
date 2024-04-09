@@ -11,10 +11,7 @@ export class Selector {
   }
 
   getNode(): HTMLSelectElement {
-    if (!this.node) {
-      this.node = this.createNode();
-    }
-
+    this.node ??= this.createNode();
     return this.node;
   }
 

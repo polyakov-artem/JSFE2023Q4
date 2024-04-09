@@ -32,7 +32,11 @@ export class Selector {
     length = 0,
     valuesToPass = [],
     selectValue = 'choose',
-  }: { length?: number; valuesToPass?: number[]; selectValue?: string } = {}): void {
+  }: {
+    length?: number;
+    valuesToPass?: number[];
+    selectValue?: string;
+  }): void {
     this.node.innerHTML = '';
     this.node.append(this.createOption(this.title, 'choose'));
 

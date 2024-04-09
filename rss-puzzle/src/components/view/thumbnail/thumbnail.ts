@@ -2,7 +2,7 @@ import { classes } from '../../../common/js/constants';
 import { ThumbnailFn } from '../../../types/types';
 import { createDomElement } from '../../utils/utils';
 
-export const thumbnail: ThumbnailFn = ({ caption = '', src = '' } = {}) => {
+export const thumbnail: ThumbnailFn = ({ caption = '', src = '' }) => {
   const figure: HTMLElement = createDomElement({ tag: 'figure', classNames: [classes.thumbnail] });
   const img: HTMLElement = createDomElement({
     tag: 'img',

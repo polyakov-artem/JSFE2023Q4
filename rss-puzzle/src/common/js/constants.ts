@@ -136,10 +136,13 @@ export const classes: Dictionary = {
   word: 'word',
 };
 
-export const classSelectors: Dictionary = {};
+export const classSelectors: Dictionary = Object.entries(classes).reduce<Dictionary>(
+  (acc, [key, value]: [string, string]) => {
+    acc[key] = '.' + value;
 
-Object.entries(classes).forEach((entry: [string, string]): void => {
-  classSelectors[entry[0]] = '.' + entry[1];
-});
+    return acc;
+  },
+  {},
+);
 
 export const INTRO_TEXT: string = `RSS Puzzle is an interactive mini-game aimed at enhancing English language skills. Players assemble sentences from jumbled words, inspired by Lingualeo's Phrase Constructor training. The game integrates various levels of difficulty, hint options, and a unique puzzle-like experience with artwork.`;

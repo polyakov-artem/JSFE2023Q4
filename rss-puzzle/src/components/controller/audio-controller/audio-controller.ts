@@ -24,12 +24,14 @@ export class AudioController {
 
     const endListener = (): void => {
       endPlayingCb?.();
+      // eslint-disable-next-line
       removeListeners();
       this.audio = null;
     };
 
     const errorListener = (): void => {
       errorCb?.();
+      // eslint-disable-next-line
       removeListeners();
       this.audio = null;
     };

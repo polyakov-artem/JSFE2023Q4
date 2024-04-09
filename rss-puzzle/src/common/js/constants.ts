@@ -8,13 +8,13 @@ export const defaultUser: UserData = {
   passedRounds: [],
 };
 
+export const NAME_INPUT_MIN_LENGTH = 3;
+export const SURNAME_INPUT_MIN_LENGTH = 4;
+
 export const SEVER_STORAGE_KEY: string = 'rss-puzzle-server';
 export const CLIENT_STORAGE_KEY: string = 'rss-puzzle-client';
 export const AUTH_DATA_KEY: string = 'saved-user';
 export const HINT_DATA_KEY: string = 'is-checked';
-
-export const INVALID_NAME_LENGTH: string = 'The length must be at least 3 characters';
-export const INVALID_SURNAME_LENGTH: string = 'The length must be at least 4 characters';
 
 export const INVALID_CHARS: string = `Only english letters or "-" are allowable`;
 export const INVALID_FIRST_LETTER: string = 'First letter must be in uppercase';

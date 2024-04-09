@@ -1,4 +1,9 @@
-import { classSelectors, classes } from '../../../common/js/constants';
+import {
+  NAME_INPUT_MIN_LENGTH,
+  SURNAME_INPUT_MIN_LENGTH,
+  classSelectors,
+  classes,
+} from '../../../common/js/constants';
 import { createDomElement } from '../../utils/utils';
 import { loginField } from '../login-field/login-field';
 import { loginLabel } from '../login-label/login-label';
@@ -91,8 +96,14 @@ export class LoginBlock {
 
   validateFields(): { nameError: string; surnameError: string } {
     return {
-      nameError: App.appController.authController.validateName(this.nameInput.value),
-      surnameError: App.appController.authController.validateSurname(this.surnameInput.value),
+      nameError: App.appController.authController.validateInput(
+        this.nameInput.value,
+        NAME_INPUT_MIN_LENGTH,
+      ),
+      surnameError: App.appController.authController.validateInput(
+        this.surnameInput.value,
+        SURNAME_INPUT_MIN_LENGTH,
+      ),
     };
   }
 

@@ -2,24 +2,17 @@ import {
   AUTH_DATA_KEY,
   INVALID_CHARS,
   INVALID_FIRST_LETTER,
-  INVALID_NAME_LENGTH,
-  INVALID_SURNAME_LENGTH,
+  NAME_INPUT_MIN_LENGTH,
+  SURNAME_INPUT_MIN_LENGTH,
 } from '../../../common/js/constants';
 import { AuthData, UserData } from '../../../types/types';
 import { App } from '../../app/app';
 
 export class AuthController {
-  validateName(name: string = ''): string {
-    if (/[^a-zA-Z-]/g.test(name)) return INVALID_CHARS;
-    if (name.length < 3) return INVALID_NAME_LENGTH;
-    if (name[0] !== name[0].toUpperCase()) return INVALID_FIRST_LETTER;
-    return '';
-  }
-
-  validateSurname(surname: string = ''): string {
-    if (/[^a-zA-Z-]/g.test(surname)) return INVALID_CHARS;
-    if (surname.length < 4) return INVALID_SURNAME_LENGTH;
-    if (surname[0] !== surname[0].toUpperCase()) return INVALID_FIRST_LETTER;
+  validateInput(inputText: string = '', minLength: number = 3): string {
+    if (/[^a-zA-Z-]/g.test(inputText)) return INVALID_CHARS;
+    if (inputText.length < minLength) return `The length must be at least ${minLength} characters`;
+    if (inputText[0] !== inputText[0].toUpperCase()) return INVALID_FIRST_LETTER;
     return '';
   }
 
@@ -32,8 +25,8 @@ export class AuthController {
 
     const { name, surname }: { name: string | undefined; surname: string | undefined } = authData;
 
-    const nameError: string = this.validateName(name);
-    const surnameError: string = this.validateSurname(surname);
+    const nameError: string = this.validateInput(name, NAME_INPUT_MIN_LENGTH);
+    const surnameError: string = this.validateInput(surname, SURNAME_INPUT_MIN_LENGTH);
 
     if (nameError || surnameError) {
       this.logout();

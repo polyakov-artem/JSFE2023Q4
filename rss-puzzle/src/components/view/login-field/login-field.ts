@@ -13,7 +13,7 @@ export const loginField: LoginField = ({ name = '' }) => {
     attr: {
       type: 'text',
       id: name,
-      name: name,
+      name,
       required: 'true',
     },
   }) as HTMLInputElement;

@@ -7,7 +7,7 @@ export const thumbnail: ThumbnailFn = ({ caption = '', src = '' }) => {
   const img: HTMLElement = createDomElement({
     tag: 'img',
     classNames: [classes.thumbnailImg],
-    attr: { alt: '', src: src },
+    attr: { alt: '', src },
   });
   const figcaption: HTMLElement = createDomElement({
     tag: 'figcaption',

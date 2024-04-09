@@ -4,7 +4,7 @@ import { App } from '../../app/app';
 
 export class GameProgressController {
   startNewGame(): void {
-    const lastPassedRound: LastPassedRound = App.appModel.lastPassedRound;
+    const { lastPassedRound } = App.appModel;
 
     if (lastPassedRound.lastLevel !== undefined && lastPassedRound.lastRound !== undefined) {
       App.appView.page.continuePage.redraw();
@@ -28,7 +28,7 @@ export class GameProgressController {
   }
 
   autoSelectNextGame(): void {
-    const lastPassedRound: LastPassedRound = App.appModel.lastPassedRound;
+    const { lastPassedRound }: AppModel = App.appModel;
 
     const { lastLevel, lastRound }: LastPassedRound = lastPassedRound;
     const { passedLevels, numOfLevels }: { passedLevels: number[]; numOfLevels: number } =
@@ -111,6 +111,7 @@ export class GameProgressController {
   getPassedRounds(level: number): number[] {
     return App.appModel.passedRounds[level];
   }
+
   saveProgress(): void {
     const { currentLevel, currentRound, userData }: AppModel = App.appModel;
     const { passedLevels, passedRounds }: UserData = userData;

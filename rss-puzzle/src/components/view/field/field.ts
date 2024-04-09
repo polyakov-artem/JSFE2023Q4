@@ -1,10 +1,12 @@
 import { NUM_OF_SENTENCES_IN_ROUND, classes } from '../../../common/js/constants';
 import { SentenceData } from '../../../types/types';
+import { AppModel } from '../../app-model/app-model';
 import { App } from '../../app/app';
 import { createDomElement, getGridStyles } from '../../utils/utils';
 
 export class Field {
   node!: HTMLElement;
+
   getNode(): HTMLElement {
     this.node ??= this.createNode();
     return this.node;
@@ -16,7 +18,7 @@ export class Field {
   }
 
   addSentences(): void {
-    const currentRoundSentences: SentenceData[] = App.appModel.currentRoundSentences;
+    const { currentRoundSentences }: AppModel = App.appModel;
     for (let i = 0; i < NUM_OF_SENTENCES_IN_ROUND; i++) {
       const sentence: HTMLElement = createDomElement({
         classNames: [classes.sentence],

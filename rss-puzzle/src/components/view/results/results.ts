@@ -1,5 +1,6 @@
 import { classes } from '../../../common/js/constants';
 import { Results, SentenceData } from '../../../types/types';
+import { AppModel } from '../../app-model/app-model';
 import { App } from '../../app/app';
 import { createDomElement } from '../../utils/utils';
 import { playAudioBtn } from '../play-audio-btn/play-audio-btn';
@@ -35,7 +36,7 @@ export const results: Results = ({ type, list }) => {
   node.append(titleItem);
   titleItem.append(title, badge);
 
-  const currentRoundSentences: SentenceData[] = App.appModel.currentRoundSentences;
+  const { currentRoundSentences }: AppModel = App.appModel;
 
   list.forEach((number: number): void => {
     const sentence: SentenceData = currentRoundSentences[number];

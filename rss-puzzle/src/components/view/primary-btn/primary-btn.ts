@@ -15,9 +15,9 @@ export const primaryBtn: PrimaryBtn = ({
 
   const options: CreateDomElementProps = {
     tag: 'button',
-    text: text,
+    text,
     classNames: btnClasses,
-    attr: attr,
+    attr,
   };
 
   if (disabled) options.attr = { disabled: 'true' };

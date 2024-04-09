@@ -140,7 +140,7 @@ export const classes: Dictionary = {
 
 export const classSelectors: Dictionary = Object.entries(classes).reduce<Dictionary>(
   (acc, [key, value]: [string, string]) => {
-    acc[key] = '.' + value;
+    acc[key] = `.${value}`;
 
     return acc;
   },

@@ -21,16 +21,16 @@ export const createDomElement: CreateDomElement = ({ tag = 'div', classNames, te
   if (text) element.textContent = text;
 
   if (attr) {
-    for (const key in attr) {
+    Object.keys(attr).forEach((key: string): void => {
       element.setAttribute(key, attr[key]);
-    }
+    });
   }
 
   return element;
 };
 
 // includes min and max
-export const getRandom: GetRandom = (min = 0, max) => {
+export const getRandom: GetRandom = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 

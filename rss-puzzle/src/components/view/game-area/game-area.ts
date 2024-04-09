@@ -108,10 +108,7 @@ export class GameArea {
   }
 
   solveSentence(): void {
-    const {
-      currentSentenceNumber,
-      currentSentenceWords,
-    }: { currentSentenceNumber: number; currentSentenceWords: string[] } = App.appModel;
+    const { currentSentenceNumber, currentSentenceWords }: AppModel = App.appModel;
     const sentenceElement = this.field.getNode().children[currentSentenceNumber] as HTMLElement;
     this.addWords(sentenceElement, currentSentenceWords);
   }
@@ -126,10 +123,8 @@ export class GameArea {
   }
 
   wordClickHandler(wordElement: HTMLElement): void {
-    const {
-      currentSentenceNumber,
-      isRoundEnded,
-    }: { currentSentenceNumber: number; isRoundEnded: boolean } = App.appModel;
+    const { currentSentenceNumber, isRoundEnded }: AppModel = App.appModel;
+
     if (isRoundEnded) return;
     const sourceField: HTMLElement = document.querySelector(classSelectors.gameWords)!;
     const sentenceField: HTMLElement = document.querySelector(

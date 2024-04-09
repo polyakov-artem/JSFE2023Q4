@@ -125,3 +125,5 @@ export type ResultsFn = ({
 }) => HTMLElement;
 
 export type ThumbnailFn = ({ caption, src }: { caption?: string; src?: string }) => HTMLElement;
+
+export type LastRoundResults = { resolved: number[]; notResolved: number[] };

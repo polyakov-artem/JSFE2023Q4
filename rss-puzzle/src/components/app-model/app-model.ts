@@ -1,4 +1,11 @@
-import { LastPassedRound, LevelsData, RoundData, SentenceData, UserData } from '../../types/types';
+import {
+  LastPassedRound,
+  LastRoundResults,
+  LevelsData,
+  RoundData,
+  SentenceData,
+  UserData,
+} from '../../types/types';
 
 export class AppModel {
   currentLevel: number;
@@ -6,7 +13,7 @@ export class AppModel {
   currentSentenceNumber: number;
   isRoundEnded: boolean;
   userData: UserData;
-  lastRoundResults: { resolved: number[]; notResolved: number[] };
+  lastRoundResults: LastRoundResults;
   levelsData: LevelsData;
 
   constructor() {

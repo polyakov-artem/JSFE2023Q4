@@ -1,4 +1,5 @@
 import { classSelectors, classes } from '../../../common/js/constants';
+import { LastRoundResults, RoundResult } from '../../../types/types';
 import { App } from '../../app/app';
 import { createDomElement } from '../../utils/utils';
 import { primaryBtn } from '../primary-btn/primary-btn';
@@ -43,9 +44,8 @@ export class ResultBlocks {
   }
 
   updateView(): void {
-    const { resolved, notResolved }: { resolved: number[]; notResolved: number[] } =
-      App.appModel.lastRoundResults;
-    const { imageSrc }: { imageSrc: string } = App.appModel.currentRoundData.roundResult;
+    const { resolved, notResolved }: LastRoundResults = App.appModel.lastRoundResults;
+    const { imageSrc }: RoundResult = App.appModel.currentRoundData.roundResult;
     const captionText: string = App.appModel.currentImgCaption;
 
     this.node.querySelectorAll(classSelectors.results).forEach((element: Element): void => {

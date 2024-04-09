@@ -1,8 +1,8 @@
 import { classes } from '../../../common/js/constants';
-import { CreateDomElementProps, PlayAudioBtnFn } from '../../../types/types';
+import { CreateDomElementProps, PlayAudioBtn } from '../../../types/types';
 import { createDomElement } from '../../utils/utils';
 
-export const playAudioBtn: PlayAudioBtnFn = ({ classNames = [], isSmall = false, src = '' }) => {
+export const playAudioBtn: PlayAudioBtn = ({ classNames = [], isSmall = false, src = '' }) => {
   const nodeClasses: string[] = [
     classes.btn,
     classes.iconBtn,

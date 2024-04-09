@@ -1,10 +1,10 @@
 import { classes } from '../../../common/js/constants';
-import { ResultsFn, SentenceData } from '../../../types/types';
+import { Results, SentenceData } from '../../../types/types';
 import { App } from '../../app/app';
 import { createDomElement } from '../../utils/utils';
 import { playAudioBtn } from '../play-audio-btn/play-audio-btn';
 
-export const results: ResultsFn = ({ type, list }) => {
+export const results: Results = ({ type, list }) => {
   const nodeClasses: string[] = [classes.results];
   let titleText = '';
 

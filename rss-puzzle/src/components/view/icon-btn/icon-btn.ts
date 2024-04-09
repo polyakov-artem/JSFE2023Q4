@@ -7,10 +7,10 @@ export const iconBtn: IconBtnFn = ({ text = '', classNames = [], disabled = fals
   if (classNames) btnClasses = btnClasses.concat(classNames);
 
   const options: CreateDomElementProps = {
+    text,
+    attr,
     tag: 'button',
-    text: text,
     classNames: btnClasses,
-    attr: attr,
   };
 
   if (disabled) options.attr = { disabled: 'true' };

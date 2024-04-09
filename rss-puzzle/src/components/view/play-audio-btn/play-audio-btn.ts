@@ -3,14 +3,15 @@ import { CreateDomElementProps, PlayAudioBtnFn } from '../../../types/types';
 import { createDomElement } from '../../utils/utils';
 
 export const playAudioBtn: PlayAudioBtnFn = ({ classNames = [], isSmall = false, src = '' }) => {
-  let nodeClasses: string[] = [
+  const nodeClasses: string[] = [
     classes.btn,
     classes.iconBtn,
     classes.iconBtnSmall,
     classes.playAudioBtn,
   ];
-  if (isSmall) nodeClasses.push(classes.iconBtnSmall);
-  if (classNames) nodeClasses = nodeClasses.concat(classNames);
+
+  isSmall && nodeClasses.push(classes.iconBtnSmall);
+  classNames && nodeClasses.push(...classNames);
 
   const options: CreateDomElementProps = {
     classNames: nodeClasses,

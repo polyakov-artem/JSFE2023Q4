@@ -19,6 +19,8 @@ export const HINT_DATA_KEY: string = 'is-checked';
 export const INVALID_CHARS: string = `Only english letters or "-" are allowable`;
 export const INVALID_FIRST_LETTER: string = 'First letter must be in uppercase';
 
+export const NUM_OF_SENTENCES_IN_ROUND = 10;
+
 export const classes: Dictionary = {
   audioHintBtn: 'audio-hint-btn',
   btn: 'btn',

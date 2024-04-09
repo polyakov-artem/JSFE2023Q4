@@ -1,4 +1,4 @@
-import { classSelectors, classes } from '../../../common/js/constants';
+import { NUM_OF_SENTENCES_IN_ROUND, classSelectors, classes } from '../../../common/js/constants';
 import { App } from '../../app/app';
 import { HintController } from '../../controller/hint-controller/hint-controller';
 import { createDomElement, getGridStyles, shuffleArray } from '../../utils/utils';
@@ -35,7 +35,7 @@ export class GameArea {
     this.rowNumbers = createDomElement({ classNames: [classes.gameRowNumbers] });
     this.field = new Field();
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < NUM_OF_SENTENCES_IN_ROUND; i++) {
       const rowNumber: HTMLElement = createDomElement({ classNames: [classes.gameRowNumber] });
       this.rowNumbers.append(rowNumber);
     }

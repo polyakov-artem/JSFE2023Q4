@@ -1,4 +1,4 @@
-import { classes } from '../../../common/js/constants';
+import { NUM_OF_SENTENCES_IN_ROUND, classes } from '../../../common/js/constants';
 import { SentenceData } from '../../../types/types';
 import { App } from '../../app/app';
 import { createDomElement, getGridStyles } from '../../utils/utils';
@@ -17,7 +17,7 @@ export class Field {
 
   addSentences(): void {
     const currentRoundSentences: SentenceData[] = App.appModel.currentRoundSentences;
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < NUM_OF_SENTENCES_IN_ROUND; i++) {
       const sentence: HTMLElement = createDomElement({
         classNames: [classes.sentence],
         attr: {

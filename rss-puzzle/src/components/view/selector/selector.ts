@@ -17,7 +17,9 @@ export class Selector {
 
   createNode(): HTMLSelectElement {
     let nodeClasses: string[] = [classes.selector];
+
     if (this.classNames) nodeClasses = nodeClasses.concat(this.classNames);
+
     const node = createDomElement({
       tag: 'select',
       classNames: nodeClasses,

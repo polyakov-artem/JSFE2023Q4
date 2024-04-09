@@ -56,6 +56,7 @@ export class GameButtons {
 
   updateView(): void {
     this.node.innerHTML = '';
+
     if (App.appModel.isRoundEnded) {
       this.node.append(this.showImgBtn);
       this.node.append(this.resultsBtn);

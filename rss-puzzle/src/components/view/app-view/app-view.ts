@@ -19,7 +19,6 @@ export class AppView {
     const target = e.target as HTMLElement;
     if (target.closest(classSelectors.playAudioBtn)) {
       this.playBtnHandler(target);
-      return;
     }
   }
 

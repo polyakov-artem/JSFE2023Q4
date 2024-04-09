@@ -1,10 +1,4 @@
-import {
-  CloneObj,
-  CreateDomElement,
-  GetGridStyles,
-  GetRandom,
-  ShuffleArray,
-} from '../../types/types';
+import { CreateDomElement, GetGridStyles, GetRandom, ShuffleArray } from '../../types/types';
 
 export const shuffleArray: ShuffleArray = (array) => {
   const arr = [...array];
@@ -38,10 +32,6 @@ export const createDomElement: CreateDomElement = ({ tag = 'div', classNames, te
 // includes min and max
 export const getRandom: GetRandom = (min = 0, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-export const cloneObj: CloneObj = (obj) => {
-  return JSON.parse(JSON.stringify(obj));
 };
 
 export const getGridStyles: GetGridStyles = (words) => {

@@ -5,7 +5,6 @@ import level4 from '../../../static/data/wordCollectionLevel4.json';
 import level5 from '../../../static/data/wordCollectionLevel5.json';
 import level6 from '../../../static/data/wordCollectionLevel6.json';
 import { StorageService } from '../controller/storage-service/storage-service';
-import { cloneObj } from '../utils/utils';
 import { SEVER_STORAGE_KEY, defaultUser } from '../../common/js/constants';
 import { LevelData, UserData } from '../../types/types';
 
@@ -27,7 +26,7 @@ export class Server {
   }
 
   createUserData(name: string, surname: string): UserData {
-    const userData = cloneObj<UserData>(defaultUser);
+    const userData = structuredClone<UserData>(defaultUser);
     userData.name = name;
     userData.surname = surname;
     this.saveUserData(userData);

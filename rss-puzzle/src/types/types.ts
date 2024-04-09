@@ -53,7 +53,6 @@ export type CreateDomElement = ({
 
 export type GetRandom = (min: number, max: number) => number;
 
-export type CloneObj = <T>(obj: T) => T;
 export type GetGridStyles = (words: string[]) => string;
 
 export type CreateDomElementProps = {

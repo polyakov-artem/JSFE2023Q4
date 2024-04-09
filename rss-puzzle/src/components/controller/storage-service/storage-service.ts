@@ -1,9 +1,5 @@
 export class StorageService {
-  storageKeyPrefix: string;
-
-  constructor(storageKeyPrefix: string) {
-    this.storageKeyPrefix = storageKeyPrefix;
-  }
+  constructor(private readonly storageKeyPrefix: string) {}
 
   getStorageKey(key: string): string {
     return `${this.storageKeyPrefix}_${key}`;

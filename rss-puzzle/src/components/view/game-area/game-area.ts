@@ -1,4 +1,5 @@
 import { NUM_OF_SENTENCES_IN_ROUND, classSelectors, classes } from '../../../common/js/constants';
+import { AppModel } from '../../app-model/app-model';
 import { App } from '../../app/app';
 import { HintController } from '../../controller/hint-controller/hint-controller';
 import { createDomElement, getGridStyles, shuffleArray } from '../../utils/utils';
@@ -68,15 +69,8 @@ export class GameArea {
   }
 
   updateSentenceRelated(): void {
-    const {
-      currentSentenceNumber,
-      currentSentenceAudio,
-      currentSentenceTranslate,
-    }: {
-      currentSentenceNumber: number;
-      currentSentenceAudio: string;
-      currentSentenceTranslate: string;
-    } = App.appModel;
+    const { currentSentenceNumber, currentSentenceAudio, currentSentenceTranslate }: AppModel =
+      App.appModel;
 
     [...this.rowNumbers.children].forEach((element: Element): void =>
       element.classList.remove(classes.gameRowNumberActive),

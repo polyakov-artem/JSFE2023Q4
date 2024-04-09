@@ -10,15 +10,15 @@ import { SEVER_STORAGE_KEY, defaultUser } from '../../common/js/constants';
 import { LevelData, UserData } from '../../types/types';
 
 export class Server {
-  lelevsData: LevelData[];
+  levelsData: LevelData[];
   storage: StorageService;
   constructor() {
-    this.lelevsData = [level1, level2, level3, level4, level5, level6];
+    this.levelsData = [level1, level2, level3, level4, level5, level6];
     this.storage = new StorageService(SEVER_STORAGE_KEY);
   }
 
   getLevelsData(): LevelData[] {
-    return this.lelevsData;
+    return this.levelsData;
   }
 
   login(name: string | undefined, surname: string | undefined): UserData | undefined {

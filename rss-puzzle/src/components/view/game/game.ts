@@ -6,9 +6,13 @@ import { HintsControls } from '../hints-controls/hints-controls';
 
 export class Game {
   node!: HTMLElement;
+
   gameSelector!: GameSelector;
+
   gameArea!: GameArea;
+
   hintsControls!: HintsControls;
+
   getNode(): HTMLElement {
     this.node ??= this.createNode();
     return this.node;

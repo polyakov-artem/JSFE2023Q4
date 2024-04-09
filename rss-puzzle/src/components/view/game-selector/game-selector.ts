@@ -6,7 +6,9 @@ import { Selector } from '../selector/selector';
 
 export class GameSelector {
   node!: HTMLElement;
+
   levelSelector!: Selector;
+
   roundSelector!: Selector;
 
   getNode(): HTMLElement {

@@ -4,7 +4,9 @@ import { ResultBlocks } from '../results-block/results-block';
 
 export class Statistics {
   node!: HTMLElement;
+
   resultsBlock!: ResultBlocks;
+
   getNode(): HTMLElement {
     this.node ??= this.createNode();
     return this.node;

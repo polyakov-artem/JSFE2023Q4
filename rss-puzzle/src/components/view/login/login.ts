@@ -4,7 +4,9 @@ import { LoginBlock } from '../login-block/login-block';
 
 export class Login {
   node!: HTMLElement;
+
   loginBlock!: LoginBlock;
+
   getNode(): HTMLElement {
     this.node ??= this.createNode();
     return this.node;

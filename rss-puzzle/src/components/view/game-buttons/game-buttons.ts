@@ -6,10 +6,15 @@ import { primaryBtn } from '../primary-btn/primary-btn';
 
 export class GameButtons {
   node!: HTMLElement;
+
   checkBtn!: HTMLButtonElement;
+
   continueBtn!: HTMLButtonElement;
+
   showImgBtn!: HTMLButtonElement;
+
   resultsBtn!: HTMLButtonElement;
+
   resolveBtn!: HTMLButtonElement;
 
   getNode(): HTMLElement {

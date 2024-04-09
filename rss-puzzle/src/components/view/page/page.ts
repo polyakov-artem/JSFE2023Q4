@@ -6,10 +6,15 @@ import { StatisticsPage } from '../statistics-page/statistics-page';
 
 export class Page {
   loginPage: LoginPage;
+
   startPage: StartPage;
+
   gamePage: GamePage;
+
   continuePage: ContinuePage;
+
   statisticsPage: StatisticsPage;
+
   constructor() {
     this.loginPage = new LoginPage();
     this.startPage = new StartPage();

@@ -5,6 +5,7 @@ import { primaryBtn } from '../primary-btn/primary-btn';
 
 export class Header {
   node!: HTMLElement;
+
   getNode(): HTMLElement {
     if (!this.node) {
       this.node = this.createNode();

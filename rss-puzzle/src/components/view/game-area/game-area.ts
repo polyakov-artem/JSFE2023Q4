@@ -9,13 +9,21 @@ import { playAudioBtn } from '../play-audio-btn/play-audio-btn';
 
 export class GameArea {
   node!: HTMLElement;
+
   playBtn!: HTMLElement;
+
   textHint!: HTMLElement;
+
   table!: HTMLElement;
+
   field!: Field;
+
   gameWords!: HTMLElement;
+
   rowNumbers!: HTMLElement;
+
   gameButtons!: GameButtons;
+
   getNode(): HTMLElement {
     if (!this.node) {
       this.node = this.createNode();
@@ -101,10 +109,10 @@ export class GameArea {
     container.innerHTML = '';
     if (randomize) words = shuffleArray(words);
 
-    for (const word of words) {
+    words.forEach((word) => {
       const wordElement: HTMLElement = createDomElement({ text: word, classNames: [classes.word] });
       container.append(wordElement);
-    }
+    });
   }
 
   solveSentence(): void {

@@ -5,8 +5,11 @@ import { iconBtn } from '../icon-btn/icon-btn';
 
 export class HintsControls {
   node!: HTMLElement;
+
   textHintBtn!: HintBtn;
+
   audioHintBtn!: HintBtn;
+
   imgHintBtn!: HintBtn;
 
   getNode(): HTMLElement {

@@ -3,6 +3,7 @@ import { Login } from '../login/login';
 
 export class LoginPage {
   login!: Login;
+
   clearPage(): void {
     const bodyElements: NodeListOf<Element> = document.querySelectorAll('body > *:not(script)');
     bodyElements.forEach((element) => element.remove());

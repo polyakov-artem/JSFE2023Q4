@@ -10,7 +10,9 @@ import { LevelData, UserData } from '../../types/types';
 
 export class Server {
   levelsData: LevelData[];
+
   storage: StorageService;
+
   constructor() {
     this.levelsData = [level1, level2, level3, level4, level5, level6];
     this.storage = new StorageService(SEVER_STORAGE_KEY);

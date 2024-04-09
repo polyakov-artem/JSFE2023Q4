@@ -4,7 +4,9 @@ import { Header } from '../header/header';
 
 export class GamePage {
   game!: Game;
+
   header!: Header;
+
   clearPage(): void {
     const bodyElements: NodeListOf<Element> = document.querySelectorAll('body > *:not(script)');
     bodyElements.forEach((element: Element): void => element.remove());

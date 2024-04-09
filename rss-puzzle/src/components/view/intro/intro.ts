@@ -6,6 +6,7 @@ import { primaryBtn } from '../primary-btn/primary-btn';
 
 export class Intro {
   node!: HTMLElement;
+
   getNode(): HTMLElement {
     if (!this.node) {
       this.node = this.createNode();

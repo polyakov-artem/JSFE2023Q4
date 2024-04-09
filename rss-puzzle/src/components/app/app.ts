@@ -8,9 +8,13 @@ export class App {
   constructor() {
     this.init();
   }
+
   static appModel = new AppModel();
+
   static appView = new AppView();
+
   static appController = new AppController();
+
   init() {
     App.appView.init();
     App.appController.init();

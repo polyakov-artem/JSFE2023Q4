@@ -8,10 +8,15 @@ import { StorageService } from '../storage-service/storage-service';
 
 export class AppController {
   authController!: AuthController;
+
   storage!: StorageService;
+
   server!: Server;
+
   gameController!: GameController;
+
   audioController!: AudioController;
+
   init() {
     this.server = new Server();
     this.storage = new StorageService(CLIENT_STORAGE_KEY);

@@ -8,6 +8,7 @@ import { thumbnail } from '../thumbnail/thumbnail';
 
 export class ResultBlocks {
   node!: HTMLElement;
+
   continueBtn!: HTMLElement;
 
   getNode(): HTMLElement {

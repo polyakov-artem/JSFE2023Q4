@@ -9,6 +9,7 @@ export class ContinuePage {
     const bodyElements: NodeListOf<Element> = document.querySelectorAll('body > *:not(script)');
     bodyElements.forEach((element) => element.remove());
   }
+
   redraw(): void {
     this.clearPage();
     document.body.className = `${classes.page} ${classes.pageStart}`;

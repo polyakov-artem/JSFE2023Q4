@@ -4,6 +4,7 @@ import { Statistics } from '../statistics/statistics';
 
 export class StatisticsPage {
   header!: Header;
+
   statistics!: Statistics;
 
   clearPage(): void {

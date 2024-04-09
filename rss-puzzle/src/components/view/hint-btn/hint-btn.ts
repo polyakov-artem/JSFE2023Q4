@@ -3,9 +3,13 @@ import { iconBtn } from '../icon-btn/icon-btn';
 
 export class HintBtn {
   className: string;
+
   checkClassName: string;
+
   node!: HTMLElement;
+
   isChecked!: boolean;
+
   constructor({ className = '', checkClassName = '' }) {
     this.className = className;
     this.checkClassName = checkClassName;

@@ -9,11 +9,17 @@ import {
 
 export class AppModel {
   currentLevel: number;
+
   currentRound: number;
+
   currentSentenceNumber: number;
+
   isRoundEnded: boolean;
+
   userData: UserData;
+
   lastRoundResults: LastRoundResults;
+
   levelsData: LevelsData;
 
   constructor() {
@@ -91,6 +97,7 @@ export class AppModel {
     const roundData = this.currentRoundData;
     return roundData.sentences;
   }
+
   get currentRoundData(): RoundData {
     return this.levelsData[this.currentLevel].rounds[this.currentRound];
   }
@@ -103,6 +110,7 @@ export class AppModel {
   get name(): string {
     return this.userData.name;
   }
+
   get surname(): string {
     return this.userData.surname;
   }
@@ -126,6 +134,7 @@ export class AppModel {
   get currentLevelPassedRounds(): number[] {
     return this.passedRounds[this.currentLevel];
   }
+
   get currentImgCaption(): string {
     const {
       author = '',
@@ -136,11 +145,10 @@ export class AppModel {
     const authorInfo = author.split(', ');
     if (authorInfo.length === 1) {
       return `${authorInfo[0]} - ${name} (${year})`;
-    } else {
-      const authorName = authorInfo[1];
-      let authorSurname = authorInfo[0].toLowerCase();
-      authorSurname = authorSurname.slice(0, 1).toUpperCase() + authorSurname.slice(1);
-      return `${authorName} ${authorSurname} - ${name} (${year})`;
     }
+    const authorName = authorInfo[1];
+    let authorSurname = authorInfo[0].toLowerCase();
+    authorSurname = authorSurname.slice(0, 1).toUpperCase() + authorSurname.slice(1);
+    return `${authorName} ${authorSurname} - ${name} (${year})`;
   }
 }

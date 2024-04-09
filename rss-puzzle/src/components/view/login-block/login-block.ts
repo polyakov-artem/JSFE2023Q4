@@ -12,11 +12,17 @@ import { App } from '../../app/app';
 
 export class LoginBlock {
   node!: HTMLElement;
+
   nameField!: HTMLElement;
+
   nameInput!: HTMLInputElement;
+
   surnameField!: HTMLElement;
+
   surnameInput!: HTMLInputElement;
+
   loginBtn!: HTMLElement;
+
   getNode() {
     if (!this.node) {
       this.node = this.createNode();

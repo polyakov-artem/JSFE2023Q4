@@ -3,8 +3,11 @@ import { createDomElement } from '../../utils/utils';
 
 export class Selector {
   classNames: string[];
+
   title: string;
+
   node!: HTMLSelectElement;
+
   constructor({ title = '', classNames = [''] }) {
     this.classNames = classNames;
     this.title = title;
@@ -52,7 +55,7 @@ export class Selector {
   createOption(text: string, value: string): HTMLOptionElement {
     return createDomElement({
       tag: 'option',
-      text: text,
+      text,
       classNames: [classes.selectorOption],
       attr: {
         value: `${value}`,

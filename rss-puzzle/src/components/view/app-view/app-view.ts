@@ -4,6 +4,7 @@ import { Page } from '../page/page';
 
 export class AppView {
   page!: Page;
+
   init(): void {
     this.page = new Page();
     this.addListeners();

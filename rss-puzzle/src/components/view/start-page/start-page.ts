@@ -13,12 +13,8 @@ export class StartPage {
     this.clearPage();
     document.body.className = `${classes.page} ${classes.pageStart}`;
 
-    if (!this.header) {
-      this.header = new Header();
-    }
-    if (!this.intro) {
-      this.intro = new Intro();
-    }
+    this.header ??= new Header();
+    this.intro ??= new Intro();
     document.body.append(this.header.getNode(), this.intro.getNode());
   }
 }

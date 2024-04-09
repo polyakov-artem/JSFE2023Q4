@@ -14,12 +14,9 @@ export class GamePage {
     this.clearPage();
     document.body.className = `${classes.page} ${classes.pageGame}`;
 
-    if (!this.header) {
-      this.header = new Header();
-    }
-    if (!this.game) {
-      this.game = new Game();
-    }
+    this.header ??= new Header();
+    this.game ??= new Game();
+
     document.body.append(this.header.getNode(), this.game.getNode());
     this.game.gameSelector.updateView();
     this.game.gameArea.updateView();

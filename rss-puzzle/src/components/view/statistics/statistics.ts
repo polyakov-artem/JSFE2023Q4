@@ -19,9 +19,7 @@ export class Statistics {
       classNames: [classes.window, classes.windowTransparent],
     });
 
-    if (!this.resultsBlock) {
-      this.resultsBlock = new ResultBlocks();
-    }
+    this.resultsBlock ??= new ResultBlocks();
 
     node.append(container);
     container.append(window);

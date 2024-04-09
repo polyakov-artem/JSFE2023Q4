@@ -67,8 +67,8 @@ export class Intro {
 
   updateView(): void {
     const { name, surname }: AuthData = App.appModel.userData;
-    const greeeting: HTMLElement = this.node.querySelector(classSelectors.introGreeting)!;
-    greeeting.textContent = `Hello, ${name} ${surname}!`;
-    greeeting.classList.add(classes.introGreetingVisible);
+    const greeting: HTMLElement = this.node.querySelector(classSelectors.introGreeting)!;
+    greeting.textContent = `Hello, ${name} ${surname}!`;
+    greeting.classList.add(classes.introGreetingVisible);
   }
 }

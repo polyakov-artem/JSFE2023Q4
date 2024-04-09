@@ -1,4 +1,5 @@
 import { AuthData, LastPassedRound, UserData } from '../../../types/types';
+import { AppModel } from '../../app-model/app-model';
 import { App } from '../../app/app';
 
 export class GameProgressController {
@@ -111,13 +112,8 @@ export class GameProgressController {
     return App.appModel.passedRounds[level];
   }
   saveProgress(): void {
-    const {
-      currentLevel,
-      currentRound,
-      userData,
-    }: { currentLevel: number; currentRound: number; userData: UserData } = App.appModel;
-    const { passedLevels, passedRounds }: { passedLevels: number[]; passedRounds: number[][] } =
-      userData;
+    const { currentLevel, currentRound, userData }: AppModel = App.appModel;
+    const { passedLevels, passedRounds }: UserData = userData;
 
     if (passedRounds[currentLevel] === undefined) {
       passedRounds[currentLevel] = [];

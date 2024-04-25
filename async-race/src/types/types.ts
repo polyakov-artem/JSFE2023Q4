@@ -1,4 +1,4 @@
-import { engineStates, order, sort, sortBtnText } from '../common/js/constants';
+import { HTTPMethods, engineStates, order, sort, sortBtnText } from '../common/js/constants';
 
 export type Dictionary = {
   [key: string]: string;
@@ -51,16 +51,7 @@ export type IsEmptyObj = (obj: object) => boolean;
 
 export type IsObj = (obj: unknown) => boolean;
 
-export type HTTPMethod =
-  | 'GET'
-  | 'HEAD'
-  | 'POST'
-  | 'PUT'
-  | 'DELETE'
-  | 'CONNECT'
-  | 'OPTIONS'
-  | 'TRACE'
-  | 'PATCH';
+export type HTTPMethod = (typeof HTTPMethods)[keyof typeof HTTPMethods];
 
 export type DisableElement = (element: HTMLElement) => void;
 export type EnableElement = (element: HTMLElement) => void;

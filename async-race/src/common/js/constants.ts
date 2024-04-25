@@ -1,4 +1,4 @@
-import { Dictionary, HTTPMethod } from '../../types/types';
+import { Dictionary } from '../../types/types';
 
 export const classes: Dictionary = {
   btn: 'btn',
@@ -93,17 +93,17 @@ export const attributeKeys: Dictionary = {
   orderBy: 'data-orderby',
 };
 
-export const HTTPMethods: { [key: string]: HTTPMethod } = {
-  get: 'GET',
-  head: 'HEAD',
-  post: 'POST',
-  put: 'PUT',
-  patch: 'PATCH',
-  delete: 'DELETE',
-  connect: 'CONNECT',
-  options: 'OPTIONS',
-  trace: 'TRACE',
-};
+export enum HTTPMethods {
+  get = 'GET',
+  head = 'HEAD',
+  post = 'POST',
+  put = 'PUT',
+  patch = 'PATCH',
+  delete = 'DELETE',
+  connect = 'CONNECT',
+  options = 'OPTIONS',
+  trace = 'TRACE',
+}
 
 export enum HTTPStatusCodes {
   ok = 200,

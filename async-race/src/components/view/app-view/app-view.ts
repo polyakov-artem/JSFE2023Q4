@@ -1,21 +1,16 @@
 import { classes } from '../../../common/js/constants';
 import { createDomElement } from '../create-dom-element/create-dom-element';
-import { Garage, garage } from '../garage/garage';
-import { Modal, modal } from '../modal/modal';
+import { Garage, garage as garageView } from '../garage/garage';
+import { Modal, modal as modalView } from '../modal/modal';
+import { Winners, winners as winnersView } from '../winners/winners';
 import { Tabs } from '../tabs/tabs';
-import { Winners, winners } from '../winners/winners';
 
 export class AppView {
-  garage: Garage;
-
-  winners: Winners;
-
-  modal: Modal;
-
-  constructor() {
-    this.garage = garage;
-    this.winners = winners;
-    this.modal = modal;
+  constructor(
+    readonly garage: Garage,
+    readonly winners: Winners,
+    readonly modal: Modal,
+  ) {
     this.init();
   }
 
@@ -36,4 +31,4 @@ export class AppView {
   }
 }
 
-export const appView = new AppView();
+export const appView = new AppView(garageView, winnersView, modalView);

@@ -1,15 +1,17 @@
-import { GarageController, garageController } from '../garage-controller/garage-controller';
-import { WinnersController, winnersController } from '../winners-controller/winners-controller';
+import {
+  GarageController,
+  garageController as gController,
+} from '../garage-controller/garage-controller';
+import {
+  WinnersController,
+  winnersController as wController,
+} from '../winners-controller/winners-controller';
 
 export class AppController {
-  garageController: GarageController;
-
-  winnersController: WinnersController;
-
-  constructor() {
-    this.garageController = garageController;
-    this.winnersController = winnersController;
-  }
+  constructor(
+    readonly garageController: GarageController,
+    readonly winnersController: WinnersController,
+  ) {}
 }
 
-export const appController: AppController = new AppController();
+export const appController: AppController = new AppController(gController, wController);

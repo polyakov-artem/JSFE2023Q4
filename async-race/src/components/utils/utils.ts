@@ -1,5 +1,4 @@
 import {
-  CloneObj,
   DisableElement,
   EnableElement,
   GetRandom,
@@ -22,10 +21,6 @@ export const shuffleArray: ShuffleArray = (array) => {
 // includes min and max
 export const getRandom: GetRandom = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-export const cloneObj: CloneObj = (obj) => {
-  return JSON.parse(JSON.stringify(obj));
 };
 
 export const isEmptyObj: IsEmptyObj = (obj) => {

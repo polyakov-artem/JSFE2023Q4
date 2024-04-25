@@ -35,29 +35,17 @@ export type CreateDomElementParams = {
   attr?: Dictionary;
 };
 
-export type CreateDomElement = ({
-  tag,
-  classNames,
-  text,
-  attr,
-}: CreateDomElementParams) => HTMLElement;
+export type CreateDomElement = (params: CreateDomElementParams) => HTMLElement;
 
-export type CloneObj = (obj: object) => object;
 export type GetRandom = (min: number, max: number) => number;
 export type ShuffleArray = (array: unknown[]) => unknown[];
-
-export type PrimaryBtn = ({
-  text,
-  classNames,
-  isSmall,
-  disabled,
-  attr,
-}: PrimaryBtnParams) => HTMLButtonElement;
 
 export type PrimaryBtnParams = Omit<CreateDomElementParams, 'tag'> & {
   isSmall?: boolean;
   disabled?: boolean;
 };
+
+export type PrimaryBtn = (params: PrimaryBtnParams) => HTMLButtonElement;
 
 export type IsEmptyObj = (obj: object) => boolean;
 
@@ -117,10 +105,10 @@ export type PromiseAsyncFn = (resolve: PromiseCbFn, reject: PromiseCbFn) => Prom
 export type PromiseCbFn = (value: unknown) => void;
 
 export type TabsConstructorParams = {
-  activeTabIndex?: number;
   tabsNames: string[];
   buttonsText: string[];
   tabsContent: HTMLElement[];
+  activeTabIndex?: number;
 };
 
 export type SvgElement = (props: { classNames: string[]; id: string }) => SVGSVGElement;

@@ -157,6 +157,11 @@ export const order = {
   desc: 'DESC',
 } as const;
 
+export const sortBtnText = {
+  asc: '↓',
+  desc: '↑',
+} as const;
+
 export const carPostfixes: string[] = [
   'Essence',
   'Quicksilver',

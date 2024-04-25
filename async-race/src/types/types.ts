@@ -1,4 +1,4 @@
-import { engineStates, order, sort } from '../common/js/constants';
+import { engineStates, order, sort, sortBtnText } from '../common/js/constants';
 
 export type Dictionary = {
   [key: string]: string;
@@ -123,3 +123,5 @@ export type CarInfo = {
   carIcon: HTMLElement;
   iconCar: SVGSVGElement;
 };
+
+export type GetSortBtnText = (order: OrderByType) => (typeof sortBtnText)[keyof typeof sortBtnText];

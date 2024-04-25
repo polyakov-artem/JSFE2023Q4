@@ -1,4 +1,6 @@
 import { classes, sort } from '../../../common/js/constants';
+import { App } from '../../app/app';
+import { getSortBtnText } from '../../utils/utils';
 import { BtnSortBy } from '../btn-sort-by/btn-sort-by';
 import { createDomElement } from '../create-dom-element/create-dom-element';
 import { winnersTableContent } from '../winners-table-content/winners-table-content';
@@ -48,15 +50,28 @@ export const winnersTable = async (): Promise<HTMLElement> => {
     classNames: [classes.winnersCell],
   });
 
-  const btnSortByTime: HTMLButtonElement = new BtnSortBy(sort.time, [
-    classes.winnersSortBtn,
-  ]).getNode();
+  const { btnSortByTimeOrder, btnSortByWinsOrder } = App.appModel;
 
-  const btnSortByWins: HTMLButtonElement = new BtnSortBy(sort.wins, [
-    classes.winnersSortBtn,
-  ]).getNode();
+  const btnSortByTimeText: string = getSortBtnText(btnSortByTimeOrder);
+
+  const btnSortByTime: HTMLButtonElement = new BtnSortBy(
+    sort.time,
+    btnSortByTimeOrder,
+    btnSortByTimeText,
+    [classes.winnersSortBtn],
+  ).getNode();
+
+  const btnSortByWinsText: string = getSortBtnText(btnSortByWinsOrder);
+
+  const btnSortByWins: HTMLButtonElement = new BtnSortBy(
+    sort.wins,
+    btnSortByWinsOrder,
+    btnSortByWinsText,
+    [classes.winnersSortBtn],
+  ).getNode();
 
   thead.append(winnersTableHeader);
+
   winnersTableHeader.append(
     deleteHeader,
     numberHeader,
@@ -65,6 +80,7 @@ export const winnersTable = async (): Promise<HTMLElement> => {
     winsHeader,
     timeHeader,
   );
+
   winsHeader.append(btnSortByWins);
   timeHeader.append(btnSortByTime);
 

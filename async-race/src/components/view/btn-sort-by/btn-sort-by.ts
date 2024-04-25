@@ -6,9 +6,9 @@ import { primaryBtn } from '../primary-btn/primary-btn';
 export class BtnSortBy {
   node!: HTMLButtonElement;
 
-  constructor(sortBy: SortByType, classNames: string[] = []) {
+  constructor(sortBy: SortByType, orderBy: OrderByType, text: string, classNames: string[] = []) {
     this.addListeners();
-    this.createNode(sortBy, classNames);
+    this.createNode(sortBy, orderBy, text, classNames);
   }
 
   static listenersAdded = false;
@@ -17,20 +17,10 @@ export class BtnSortBy {
     return this.node;
   }
 
-  createNode(sortBy: SortByType, classNames: string[]): void {
-    let orderBy: OrderByType;
-
-    if (sortBy === sort.time) {
-      orderBy = App.appModel.btnSortByTimeOrder;
-    } else {
-      orderBy = App.appModel.btnSortByWinsOrder;
-    }
-
-    const text: string = orderBy === order.asc ? '↓' : '↑';
-
+  createNode(sortBy: SortByType, orderBy: OrderByType, text: string, classNames: string[]): void {
     const btn: HTMLButtonElement = primaryBtn({
-      classNames: [classes.btnSortBy, ...classNames],
       text,
+      classNames: [classes.btnSortBy, ...classNames],
       attr: {
         [attributeKeys.sortBy]: sortBy,
         [attributeKeys.orderBy]: orderBy,
@@ -60,11 +50,9 @@ export class BtnSortBy {
     const sortBy: SortByType = btn.getAttribute(attributeKeys.sortBy) as SortByType;
     let orderBy: OrderByType;
 
-    if (sortBy === sort.time) {
-      orderBy = App.appModel.btnSortByTimeOrder;
-    } else {
-      orderBy = App.appModel.btnSortByWinsOrder;
-    }
+    sortBy === sort.time
+      ? (orderBy = App.appModel.btnSortByTimeOrder)
+      : (orderBy = App.appModel.btnSortByWinsOrder);
 
     const newOrder: OrderByType = orderBy === order.asc ? order.desc : order.asc;
     App.appController.winnersController.changeSorting(sortBy, newOrder);

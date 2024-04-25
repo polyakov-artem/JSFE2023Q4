@@ -1,7 +1,9 @@
+import { order, sortBtnText } from '../../common/js/constants';
 import {
   DisableElement,
   EnableElement,
   GetRandom,
+  GetSortBtnText,
   IsEmptyObj,
   IsObj,
   ShuffleArray,
@@ -71,3 +73,6 @@ export const disableElement: DisableElement = (element: HTMLElement): void => {
 export const enableElement: EnableElement = (element: HTMLElement): void => {
   element.removeAttribute('disabled');
 };
+
+export const getSortBtnText: GetSortBtnText = (currentOrder) =>
+  currentOrder === order.asc ? sortBtnText.asc : sortBtnText.desc;

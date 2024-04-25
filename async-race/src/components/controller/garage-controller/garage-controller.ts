@@ -3,6 +3,7 @@ import {
   DISTANCE,
   HTTPMethods,
   HTTPStatusCodes,
+  NUM_OF_CARS_TO_ADD,
   TOTAL_COUNT_HEADER_KEY,
   carManufacturers,
   carPostfixes,
@@ -104,7 +105,7 @@ export class GarageController {
 
   generateCars(): void {
     const cars: CarUpdateData[] = [];
-    for (let i = 1; i <= 100; i += 1) {
+    for (let i = 1; i <= NUM_OF_CARS_TO_ADD; i += 1) {
       const manufacturer: string = carManufacturers[getRandom(0, carManufacturers.length - 1)];
       const postfix: string = carPostfixes[getRandom(0, carPostfixes.length - 1)];
       const carName: string = `${manufacturer} ${postfix}`;

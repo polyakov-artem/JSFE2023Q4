@@ -130,6 +130,7 @@ export const CARS_PAGE_LIMIT: number = 7;
 export const WINNERS_PAGE_LIMIT: number = 10;
 export const TOTAL_COUNT_HEADER_KEY: string = 'X-Total-Count';
 export const DISTANCE: number = 500000;
+export const NUM_OF_CARS_TO_ADD: number = 100;
 
 export const customEvents: Dictionary = {
   winnersUpdate: 'winnersUpdate',

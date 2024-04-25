@@ -1,4 +1,4 @@
-import { Dictionary } from '../../types/types';
+import { Dictionary, OrderByType, SortByType } from '../../types/types';
 
 export const classes: Dictionary = {
   btn: 'btn',
@@ -162,6 +162,9 @@ export const sortBtnText = {
   asc: '↓',
   desc: '↑',
 } as const;
+
+export const INITIAL_WINNERS_SORTING: SortByType = sort.time;
+export const INITIAL_SORTING_ORDER: OrderByType = order.asc;
 
 export const carPostfixes: string[] = [
   'Essence',

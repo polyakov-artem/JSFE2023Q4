@@ -1,4 +1,9 @@
-import { customEvents, order, sort } from '../../../common/js/constants';
+import {
+  INITIAL_SORTING_ORDER,
+  INITIAL_WINNERS_SORTING,
+  customEvents,
+  sort,
+} from '../../../common/js/constants';
 import { Car, OrderByType, SortByType, Winner } from '../../../types/types';
 import { dispatchCustomEvent } from '../../utils/utils';
 
@@ -23,17 +28,17 @@ export class AppModel {
 
   btnSortByWinsOrder: OrderByType;
 
-  constructor() {
+  constructor(initialWinnersSorting: SortByType, initialOrder: OrderByType) {
     this.carsTotal = 0;
     this.winnersTotal = 0;
     this.currentWinners = [];
     this.currentCars = [];
     this.carsPageNumber = 1;
     this.winnersPageNumber = 1;
-    this.sortWinnersBy = sort.time;
-    this.orderWinnersBy = order.asc;
-    this.btnSortByTimeOrder = order.asc;
-    this.btnSortByWinsOrder = order.asc;
+    this.sortWinnersBy = initialWinnersSorting;
+    this.orderWinnersBy = initialOrder;
+    this.btnSortByTimeOrder = initialOrder;
+    this.btnSortByWinsOrder = initialOrder;
   }
 
   setCarsTotal(value: number): void {
@@ -79,4 +84,4 @@ export class AppModel {
   }
 }
 
-export const appModel: AppModel = new AppModel();
+export const appModel: AppModel = new AppModel(INITIAL_WINNERS_SORTING, INITIAL_SORTING_ORDER);

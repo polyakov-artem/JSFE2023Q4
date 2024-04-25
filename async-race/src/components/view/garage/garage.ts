@@ -16,6 +16,10 @@ import { garageMainControls } from '../garage-main-controls/garage-main-controls
 export class Garage {
   node!: HTMLElement;
 
+  controls!: HTMLElement;
+
+  mainControls!: HTMLElement;
+
   addCarField!: HTMLElement;
 
   addCarInput!: HTMLInputElement;
@@ -34,6 +38,7 @@ export class Garage {
 
   constructor() {
     this.createNode();
+    this.addLinksToChildNodes();
     this.addListeners();
   }
 
@@ -43,17 +48,19 @@ export class Garage {
 
   createNode(): void {
     this.node = createDomElement({ classNames: [classes.garage] });
-    const controls: HTMLElement = garageControls();
-    const mainControls: HTMLElement = garageMainControls();
+    this.controls = garageControls();
+    this.mainControls = garageMainControls();
     const garageInnerElement: HTMLElement = createDomElement({ classNames: [classes.garageInner] });
-    this.node.append(controls, mainControls, garageInnerElement);
+    this.node.append(this.controls, this.mainControls, garageInnerElement);
+  }
 
-    this.btnStartRaces = mainControls.querySelector(classSelectors.btnStartRaces)!;
-    this.addCarField = controls.querySelector(classSelectors.addCarField)!;
+  addLinksToChildNodes(): void {
+    this.btnStartRaces = this.mainControls.querySelector(classSelectors.btnStartRaces)!;
+    this.addCarField = this.controls.querySelector(classSelectors.addCarField)!;
     this.addCarInput = this.addCarField.querySelector(classSelectors.input)!;
     this.addCarColorInput = this.addCarField.querySelector(classSelectors.colorSelector)!;
 
-    this.updateCarField = controls.querySelector(classSelectors.updateCarField)!;
+    this.updateCarField = this.controls.querySelector(classSelectors.updateCarField)!;
     this.updateCarInput = this.updateCarField.querySelector(classSelectors.input)!;
     this.updateCarColorInput = this.updateCarField.querySelector(classSelectors.colorSelector)!;
     this.updateCarBtn = this.updateCarField.querySelector(classSelectors.btn)!;

@@ -40,8 +40,12 @@ class FetchService {
     try {
       loadedData.response = await fetch(url, options);
 
-      if (returnData && loadedData.response.ok) {
-        loadedData.data = await loadedData.response.json();
+      if (returnData) {
+        if (loadedData.response.ok) {
+          loadedData.data = await loadedData.response.json();
+        } else {
+          throw new Error(`${loadedData.response.status}`);
+        }
       }
     } catch (e) {
       console.error(e);

@@ -1,11 +1,7 @@
 import { FetchDataParams, FetchReturnData, FetchOptions, QueryParts } from '../../../types/types';
 
 class FetchService {
-  baseUrl: string;
-
-  constructor(baseUrl: string) {
-    this.baseUrl = baseUrl;
-  }
+  constructor(protected readonly baseUrl: string) {}
 
   makeUrl(endpoint?: string, queryParts?: QueryParts): string {
     let url: string = this.baseUrl;

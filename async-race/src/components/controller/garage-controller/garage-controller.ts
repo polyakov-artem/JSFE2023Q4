@@ -215,11 +215,13 @@ export class GarageController {
   }
 
   async resetRace(ids: number[]): Promise<void> {
-    ids.forEach(async (id: number): Promise<void> => {
+    const promises = ids.map(async (id: number): Promise<void> => {
       dispatchCustomEvent(customEvents.raceStopped, id);
       await this.stopCarEngine(id);
       dispatchCustomEvent(customEvents.carReturn, { id });
     });
+
+    await Promise.all(promises);
   }
 
   changePageNumber(pageNumber: number): void {

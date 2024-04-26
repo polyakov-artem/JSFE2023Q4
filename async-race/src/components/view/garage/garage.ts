@@ -256,7 +256,7 @@ export class Garage {
 
   async resetRaces(): Promise<void> {
     const ids: number[] = App.appModel.currentCars.map((car: Car): number => Number(car.id));
-    App.appController.garageController.resetRace(ids);
+    await App.appController.garageController.resetRace(ids);
     enableElement(this.btnStartRaces);
   }
 
